@@ -1,0 +1,126 @@
+{
+  "namespace": "com.coffee.order.domain.generated",
+  "name": "CoffeeOrder",
+  "type": "record",
+  "fields": [
+    {
+      "name": "id",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "nickName",
+      "type": "string",
+      "default": "",
+      "doc": "Optional field represents the nick name for the user"
+    },
+    {
+      "name": "store",
+      "type": {
+        "name": "Store",
+        "type": "record",
+        "fields": [
+          {
+            "name": "id",
+            "type": "int"
+          },
+          {
+            "name": "address",
+            "type": {
+              "name": "Address",
+              "type": "record",
+              "fields": [
+                {
+                  "name": "addressLine1",
+                  "type": "string"
+                },
+                {
+                  "name": "city",
+                  "type": "string"
+                },
+                {
+                  "name": "state_province",
+                  "type": "string"
+                },
+                {
+                  "name": "country",
+                  "type": "string"
+                },
+                {
+                  "name": "zip",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "orderLineItems",
+      "type": {
+        "type": "array",
+        "items": {
+          "name": "OrderLineItem",
+          "type": "record",
+          "fields": [
+            {
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "name": "size",
+              "type":{
+                "type" : "enum",
+                "name": "Size",
+                "symbols" : ["SMALL", "MEDIUM", "LARGE"]
+              }
+            },
+            {
+              "name" : "quantity",
+              "type" : "int"
+            },
+            {
+              "name" : "cost",
+              "type":{
+                "type": "bytes",
+                "logicalType": "decimal",
+                "precision": 3,
+                "scale": 2
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "ordered_time",
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-millis"
+      }
+    },
+    {
+      "name": "pickUp",
+      "type": {
+        "type": "enum",
+        "name": "PickUp",
+        "symbols": [
+          "IN_STORE",
+          "CURBSIDE"
+        ]
+      }
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "default": "NEW"
+    }
+  ]
+}

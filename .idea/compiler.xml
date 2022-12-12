@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="schema" />
+        <module name="order-consumer" />
+        <module name="producer" />
+        <module name="order-service" />
+        <module name="order-schema" />
+        <module name="consumer" />
+        <module name="greetings-app" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="11" />
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="consumer" options="-parameters" />
+      <module name="greetings-app" options="-parameters" />
+      <module name="order-consumer" options="-parameters" />
+      <module name="order-schema" options="-parameters" />
+      <module name="order-service" options="-parameters" />
+      <module name="producer" options="-parameters" />
+      <module name="schema" options="-parameters" />
+    </option>
+  </component>
+</project>
