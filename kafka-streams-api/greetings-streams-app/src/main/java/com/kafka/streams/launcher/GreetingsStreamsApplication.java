@@ -15,6 +15,7 @@ import java.util.Properties;
 import static com.kafka.streams.util.GreetingsStreamUtil.APP_NAME;
 import static com.kafka.streams.util.GreetingsStreamUtil.DESTINATION_TOPIC;
 import static com.kafka.streams.util.GreetingsStreamUtil.SOURCE_TOPIC;
+import static com.kafka.streams.util.GreetingsStreamUtil.SOURCE_TOPIC_SPANISH;
 
 @Slf4j
 public class GreetingsStreamsApplication {
@@ -27,13 +28,13 @@ public class GreetingsStreamsApplication {
         config.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest"); // read only the new messages
         config.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.StringSerde.class);
         config.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.StringSerde.class);
-//        config.put(StreamsConfig.PROCESSING_GUARANTEE_CONFIG, EXACTLY_ONCE_V2);
 
         // create topics
-        GreetingsStreamUtil.createTopics(config, List.of(SOURCE_TOPIC, DESTINATION_TOPIC));
+        GreetingsStreamUtil.createTopics(config, List.of(SOURCE_TOPIC, SOURCE_TOPIC_SPANISH, DESTINATION_TOPIC));
 
         // create topology
-        Topology greetingsTopology = GreetingsTopology.buildTopology();
+        // Topology greetingsTopology = GreetingsTopology.buildStringSerdeTopology();
+        Topology greetingsTopology = GreetingsTopology.buildCustomSerdeTopology();
 
 
         KafkaStreams kafkaStreams = new KafkaStreams(greetingsTopology, config);

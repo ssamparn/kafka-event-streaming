@@ -40,7 +40,7 @@ $ kafka-console-producer --broker-list localhost:9092 --topic greetings --proper
 - Publish to **greetings-spanish** topic with key and value
 
 ```bash
-$ kafka-console-producer --broker-list localhost:9092 --topic greetings_spanish --property "key.separator=-" --property "parse.key=true"
+$ kafka-console-producer --broker-list localhost:9092 --topic greetings-spanish --property "key.separator=-" --property "parse.key=true"
 ```
 
 #### Consume Messages
