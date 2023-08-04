@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <parent>
+        <artifactId>avro-schema-registry</artifactId>
+        <groupId>com.kafka</groupId>
+        <version>1.0.0</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>order-service-avro</artifactId>
+    <name>Order Service Avro</name>
+    <packaging>pom</packaging>
+
+    <properties>
+        <order.service.avro.version>1.0.0</order.service.avro.version>
+        <avro.version>1.11.2</avro.version>
+        <kafka-avro-serializer.version>7.4.0</kafka-avro-serializer.version>
+        <logback.version>1.4.8</logback.version>
+        <slf4j-api.version>2.0.7</slf4j-api.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.kafka</groupId>
+                <artifactId>consumer</artifactId>
+                <version>${order.service.avro.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kafka</groupId>
+                <artifactId>producer</artifactId>
+                <version>${order.service.avro.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kafka</groupId>
+                <artifactId>schema</artifactId>
+                <version>${order.service.avro.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.avro</groupId>
+                <artifactId>avro</artifactId>
+                <version>${avro.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.confluent</groupId>
+                <artifactId>kafka-avro-serializer</artifactId>
+                <version>${kafka-avro-serializer.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j-api.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <modules>
+        <module>consumer</module>
+        <module>producer</module>
+        <module>schema</module>
+        <module>greetings-app</module>
+    </modules>
+
+</project>

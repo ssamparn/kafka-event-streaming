@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <parent>
+        <artifactId>avro-schema-registry</artifactId>
+        <groupId>com.kafka</groupId>
+        <version>1.0.0</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>order-service-kafka</artifactId>
+    <name>Order Service Kafka</name>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <avro.version>1.11.2</avro.version>
+        <kafka-avro-serializer.version>7.4.0</kafka-avro-serializer.version>
+        <logback.version>1.4.8</logback.version>
+        <slf4j-api.version>2.0.7</slf4j-api.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.avro</groupId>
+                <artifactId>avro</artifactId>
+                <version>${avro.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.confluent</groupId>
+                <artifactId>kafka-avro-serializer</artifactId>
+                <version>${kafka-avro-serializer.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kafka</groupId>
+                <artifactId>order-schema</artifactId>
+                <version>${order.service.kafka.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <modules>
+        <module>order-schema</module>
+        <module>order-consumer</module>
+        <module>order-service</module>
+    </modules>
+
+</project>

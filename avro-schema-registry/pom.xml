@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.1.2</version>
+		<relativePath/>
+	</parent>
+
+	<groupId>com.kafka</groupId>
+	<artifactId>avro-schema-registry</artifactId>
+	<version>1.0.0</version>
+	<name>Avro Schema Registry - Parent Module</name>
+	<packaging>pom</packaging>
+
+	<description>AVRO Schema Registry</description>
+
+	<properties>
+		<java.version>17</java.version>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+		<order.service.avro.version>1.0.0</order.service.avro.version>
+		<order.service.kafka.version>1.0.0</order.service.kafka.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.kafka</groupId>
+				<artifactId>order-service-avro</artifactId>
+				<version>${order.service.avro.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.kafka</groupId>
+				<artifactId>consumer</artifactId>
+				<version>${order.service.avro.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.kafka</groupId>
+				<artifactId>greetings-app</artifactId>
+				<version>${order.service.avro.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.kafka</groupId>
+				<artifactId>producer</artifactId>
+				<version>${order.service.avro.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.kafka</groupId>
+				<artifactId>schema</artifactId>
+				<version>${order.service.avro.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.kafka</groupId>
+				<artifactId>order-schema</artifactId>
+				<version>${order.service.kafka.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<repositories>
+		<repository>
+			<id>confluent</id>
+			<name>Confluent</name>
+			<url>https://packages.confluent.io/maven/</url>
+		</repository>
+	</repositories>
+
+	<modules>
+		<module>order-service-kafka</module>
+		<module>order-service-avro</module>
+	</modules>
+
+</project>
