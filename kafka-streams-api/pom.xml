@@ -20,7 +20,7 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <kafka-streams.version>3.5.1</kafka-streams.version>
-        <jackson-databind.version>2.15.2</jackson-databind.version>
+        <jackson.version>2.15.2</jackson.version>
         <lombok.version>1.18.28</lombok.version>
         <slf4j-api.version>2.0.7</slf4j-api.version>
         <logback-classic.version>1.4.8</logback-classic.version>
@@ -36,12 +36,17 @@
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>
-                <version>${jackson-databind.version}</version>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.datatype</groupId>
                 <artifactId>jackson-datatype-jsr310</artifactId>
-                <version>${jackson-databind.version}</version>
+                <version>${jackson.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
@@ -69,6 +74,9 @@
     </dependencyManagement>
     <modules>
         <module>greetings-streams-app</module>
+        <module>orders-service-kafka-streams</module>
+        <module>ktable-streams-app</module>
+        <module>stateful-kafka-streams</module>
     </modules>
 
 </project>
