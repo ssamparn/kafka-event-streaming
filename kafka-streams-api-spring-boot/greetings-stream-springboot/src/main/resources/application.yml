@@ -1,0 +1,28 @@
+---
+spring:
+  application:
+    name: greetings-kafka-streams-app
+  profiles:
+    active: local
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+  kafka:
+    streams:
+      bootstrap-servers: localhost:9092
+      application-id: greetings-kafka-streams-app-id
+    properties:
+      default:
+        key:
+          serde: 'org.apache.kafka.common.serialization.Serdes$StringSerde'
+        value:
+          serde: 'org.apache.kafka.common.serialization.Serdes$StringSerde'
+#        deserialization:
+#          exception:
+#            handler: 'org.apache.kafka.streams.errors.LogAndContinueExceptionHandler'
+#            handler: 'com.kafka.greetings.stream.springboot.exceptionhandler.StreamsDeserializationExceptionHandler'
+        production:
+          exception:
+            handler: 'com.kafka.greetings.stream.springboot.exceptionhandler.StreamsSerializationExceptionHandler'

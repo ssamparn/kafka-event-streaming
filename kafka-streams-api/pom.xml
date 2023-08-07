@@ -72,6 +72,7 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
     <modules>
         <module>greetings-streams-app</module>
         <module>orders-service-kafka-streams</module>

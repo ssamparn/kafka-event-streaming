@@ -19,5 +19,6 @@
     <modules>
         <module>avro-schema-registry</module>
         <module>kafka-streams-api</module>
+        <module>kafka-streams-api-spring-boot</module>
     </modules>
 </project>

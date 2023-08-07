@@ -72,6 +72,29 @@ public class OrdersTopology {
         return streamsBuilder.build();
     }
 
+    public static Topology buildAggregateOrdersByCountTopology() {
+        StreamsBuilder streamsBuilder = new StreamsBuilder();
+
+        KStream<String, Order> orderKStream = streamsBuilder.stream(ORDERS_TOPIC, Consumed.with(Serdes.String(), SerdesFactory.orderSerde()));
+        orderKStream.print(Printed.<String, Order>toSysOut().withLabel("orders@source"));
+
+        orderKStream
+                .split(Named.as("General-Restaurant-Order-Branched"))
+                .branch(getOrderPredicate(OrderType.GENERAL), Branched.withConsumer(generalOrdersStream -> {
+                    generalOrdersStream.print(Printed.<String, Order>toSysOut().withLabel("generalOrders@source"));
+                    generalOrdersStream
+                            .mapValues((readOnlyKey, order) -> new Revenue(order.locationId(), order.finalAmount()))
+                            .to(GENERAL_ORDERS_TOPIC, Produced.with(Serdes.String(), SerdesFactory.revenueSerde()));
+                }))
+                .branch(getOrderPredicate(OrderType.RESTAURANT), Branched.withConsumer(restaurantOrdersStream -> {
+                    restaurantOrdersStream.print(Printed.<String, Order>toSysOut().withLabel("restaurantOrders@source"));
+                    restaurantOrdersStream
+                            .mapValues((readOnlyKey, order) -> new Revenue(order.locationId(), order.finalAmount()))
+                            .to(RESTAURANT_ORDERS_TOPIC, Produced.with(Serdes.String(), SerdesFactory.revenueSerde()));
+                }));
+        return streamsBuilder.build();
+    }
+
 
 
 }
