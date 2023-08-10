@@ -12,6 +12,7 @@ import org.apache.kafka.streams.kstream.Printed;
 import static com.kafka.ktable.streams.utils.KTableStreamUtil.WORDS_TOPIC;
 
 public class KTableTopology {
+
     public static Topology buildKTableTopology() {
         StreamsBuilder streamsBuilder = new StreamsBuilder();
 
@@ -32,10 +33,9 @@ public class KTableTopology {
         StreamsBuilder streamsBuilder = new StreamsBuilder();
 
         GlobalKTable<String, String> wordsGlobalKTable = streamsBuilder
-                .globalTable(WORDS_TOPIC, Consumed.with(Serdes.String(), Serdes.String()), Materialized.as("words-store"));
+                .globalTable(WORDS_TOPIC, Consumed.with(Serdes.String(), Serdes.String()), Materialized.as("words-global-store"));
 
-        wordsGlobalKTable
-                .queryableStoreName();
+        wordsGlobalKTable.queryableStoreName();
 
         return streamsBuilder.build();
     }

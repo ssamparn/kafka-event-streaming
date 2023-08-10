@@ -31,7 +31,8 @@ public class OrdersKafkaStreamsApplication {
         // create an instance of the topology
 //        Topology topology = OrdersTopology.buildSplitGeneralRestaurantOrdersTopology();
 //        Topology topology = OrdersTopology.buildTransformingOrderToRevenueTypeTopology();
-        Topology topology = OrdersTopology.buildAggregateOrdersByCountTopology();
+//        Topology topology = OrdersTopology.buildAggregateOrdersByCountTopology();
+        Topology topology = OrdersTopology.buildAggregateOrdersByCountingTotalRevenueMadeFromOrdersTopology();
 
         // Create an instance of KafkaStreams
         KafkaStreams kafkaStreams = new KafkaStreams(topology, config);

@@ -19,7 +19,7 @@ public record AlphabetWordAggregate(String key, Set<String> valueList, int runni
         var newRunningCount = this.runningCount + 1;
         valueList.add(newValue);
         var aggregated = new AlphabetWordAggregate(key, valueList, newRunningCount);
-        log.info("aggregated : {}" , aggregated);
+        log.info("aggregated data: {}" , aggregated);
         return aggregated;
     }
 

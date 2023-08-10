@@ -21,7 +21,8 @@ public class KafkaStreamAggregationApplication {
     public static void main(String[] args) {
 //        Topology kTableTopology = AggregateOperatorsTopology.buildTopologyForCountWithGroupByKey();
 //        Topology kTableTopology = AggregateOperatorsTopology.buildTopologyForCountWithGroupBy();
-        Topology kTableTopology = AggregateOperatorsTopology.buildTopologyForReduce();
+//        Topology kTableTopology = AggregateOperatorsTopology.buildTopologyForReduce();
+        Topology kTableTopology = AggregateOperatorsTopology.buildTopologyForAggregate();
 
         Properties config = new Properties();
         config.put(StreamsConfig.APPLICATION_ID_CONFIG, "aggregate"); // consumer group

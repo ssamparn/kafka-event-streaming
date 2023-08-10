@@ -25,16 +25,16 @@ public class KTableStreamsApplication {
         config.put(StreamsConfig.CLIENT_ID_CONFIG, "words-ktable-client");
         config.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         config.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest");
-        config.put(StreamsConfig.PROCESSING_GUARANTEE_CONFIG, StreamsConfig.EXACTLY_ONCE);
+//        config.put(StreamsConfig.PROCESSING_GUARANTEE_CONFIG, StreamsConfig.EXACTLY_ONCE);
 
         createTopics(config, List.of(WORDS_TOPIC, WORDS_OUTPUT_TOPIC));
 
-
         KafkaStreams kafkaStreams = new KafkaStreams(kTableTopology, config);
 
-        log.info("!!! Starting KTable Streams !!!");
-        kafkaStreams.start();
-
         Runtime.getRuntime().addShutdownHook(new Thread(kafkaStreams::close));
+
+        log.info("!!! Starting KTable Streams !!!");
+
+        kafkaStreams.start();
     }
 }

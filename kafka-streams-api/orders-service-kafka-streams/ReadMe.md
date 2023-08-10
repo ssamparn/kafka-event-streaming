@@ -33,6 +33,14 @@ $ docker exec -it broker bash
 $ kafka-topics --bootstrap-server localhost:9092 --list
 ```
 
+#### Produce Messages
+
+- Command to produce messages to the Kafka topic.
+
+```bash
+$ kafka-console-producer --broker-list localhost:9092 --topic orders
+```
+
 #### Consume Messages
 
 - Command to consume messages from the Kafka topic.
