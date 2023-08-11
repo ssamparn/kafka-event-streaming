@@ -16,7 +16,6 @@ import static java.time.Instant.now;
 @Slf4j
 public class JoinsMockDataProducer {
 
-
     public static void main(String[] args) throws InterruptedException {
         Map<String, String> alphabetMap = Map.of(
                 "A", "A is the first letter in English Alphabets.",
@@ -34,11 +33,11 @@ public class JoinsMockDataProducer {
         );
         publishMessages(alphabetAbbrevationMap, ALPHABETS_ABBREVATIONS_TOPIC);
 
-        alphabetAbbrevationMap = Map.of(
-                "A", "Airplane",
-                "B", "Baby"
-        );
-        publishMessages(alphabetAbbrevationMap, ALPHABETS_ABBREVATIONS_TOPIC);
+//        alphabetAbbrevationMap = Map.of(
+//                "A", "Airplane",
+//                "B", "Baby"
+//        );
+//        publishMessages(alphabetAbbrevationMap, ALPHABETS_ABBREVATIONS_TOPIC);
     }
 
     private static void publishMessagesToSimulateGrace(Map<String, String> alphabetMap, String topicName, int delaySeconds) throws InterruptedException {

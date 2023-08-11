@@ -23,9 +23,10 @@ public class KafkaStreamJoinApplication {
 
 //        Topology kTableTopology = JoinOperatorsTopology.buildTopologyForJoiningKStreamWithKTable();
 //        Topology kTableTopology = JoinOperatorsTopology.buildTopologyForJoiningKStreamWithGlobalKTable();
-        Topology kTableTopology = JoinOperatorsTopology.buildTopologyForJoiningKTableWithAnotherKTable();
+//        Topology kTableTopology = JoinOperatorsTopology.buildTopologyForJoiningKTableWithAnotherKTable();
+        Topology kTableTopology = JoinOperatorsTopology.buildTopologyForJoiningKStreamWithAnotherKStream();
 
-        Properties config = new Properties();
+                Properties config = new Properties();
         config.put(StreamsConfig.APPLICATION_ID_CONFIG, "joins"); // consumer group
         config.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         config.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest");

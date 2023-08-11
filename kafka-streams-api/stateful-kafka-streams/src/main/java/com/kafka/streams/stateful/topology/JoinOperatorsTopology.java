@@ -8,12 +8,16 @@ import org.apache.kafka.streams.Topology;
 import org.apache.kafka.streams.kstream.Consumed;
 import org.apache.kafka.streams.kstream.GlobalKTable;
 import org.apache.kafka.streams.kstream.Grouped;
+import org.apache.kafka.streams.kstream.JoinWindows;
 import org.apache.kafka.streams.kstream.KStream;
 import org.apache.kafka.streams.kstream.KTable;
 import org.apache.kafka.streams.kstream.KeyValueMapper;
 import org.apache.kafka.streams.kstream.Materialized;
 import org.apache.kafka.streams.kstream.Printed;
+import org.apache.kafka.streams.kstream.StreamJoined;
 import org.apache.kafka.streams.kstream.ValueJoiner;
+
+import java.time.Duration;
 
 import static com.kafka.streams.stateful.utils.StatefulKafkaStreamsUtil.AGGREGATE_TOPIC;
 import static com.kafka.streams.stateful.utils.StatefulKafkaStreamsUtil.ALPHABETS_ABBREVATIONS_TOPIC;
@@ -114,7 +118,66 @@ public class JoinOperatorsTopology {
     }
 
     public static Topology buildTopologyForJoiningKTableWithAnotherKTable() {
+
         StreamsBuilder streamsBuilder = new StreamsBuilder();
+
+        KTable<String, String> alphabetsAbbreviationKTable = streamsBuilder
+                .table(ALPHABETS_ABBREVATIONS_TOPIC, Consumed.with(Serdes.String(), Serdes.String()), Materialized.as("alphabets-abbreviations-store"));
+        alphabetsAbbreviationKTable.toStream().print(Printed.<String, String>toSysOut().withLabel("alphabets-abbreviations"));
+
+        KTable<String, String> alphabetsKTable = streamsBuilder
+                .table(ALPHABETS_TOPIC, Consumed.with(Serdes.String(), Serdes.String()), Materialized.as("alphabets-store"));
+        alphabetsKTable.toStream().print(Printed.<String, String>toSysOut().withLabel("alphabets"));
+
+        ValueJoiner<String, String, Alphabet> valueJoiner = Alphabet::new;
+
+        KTable<String, Alphabet> joinedKTable = alphabetsAbbreviationKTable.join(alphabetsKTable, valueJoiner);
+
+//        var joinedTable = alphabetsAbbreviation
+//                .leftJoin(alphabetsTable,
+//                        valueJoiner);
+
+        joinedKTable.toStream().print(Printed.<String, Alphabet>toSysOut().withLabel("alphabets-with-abbreviations"));
+
+//      [alphabets-with-abbreviations]: A, Alphabet[abbreviation=Apple, description=A is the first letter in English Alphabets.]
+//      [alphabets-with-abbreviations]: B, Alphabet[abbreviation=Bus, description=B is the second letter in English Alphabets.]
+//      [alphabets-with-abbreviations]: C, Alphabet[abbreviation=Cat, description=C is the third letter in English Alphabets.]
+//      [alphabets-with-abbreviations]: A, Alphabet[abbreviation=Apple, description=A is the first letter in English Alphabets.]
+//      [alphabets-with-abbreviations]: B, Alphabet[abbreviation=Bus, description=B is the second letter in English Alphabets.]
+//      [alphabets-with-abbreviations]: C, Alphabet[abbreviation=Cat, description=C is the third letter in English Alphabets.]
+
+        // Here we are seeing duplicate records after joining as join is triggered from both ends of the table.
+
+        return streamsBuilder.build();
+    }
+
+    public static Topology buildTopologyForJoiningKStreamWithAnotherKStream() {
+        StreamsBuilder streamsBuilder = new StreamsBuilder();
+
+        // Note: A KStream to KStream join is a little different from other types of join.
+        // As we know a KStream is an infinite stream which represents a log of everything that happened.
+
+        // For join to happen between two KStream instances, 2 things are to be certain.
+        // 1. It is expected that both the KStreams have the same key, and
+        // 2. Events should happen within a certain time window. (By default, any records gets published to a kafka topic has a timestamp attached to it.)
+
+
+        KStream<String, String> alphabetsAbbreviationKStream = streamsBuilder.stream(ALPHABETS_ABBREVATIONS_TOPIC, Consumed.with(Serdes.String(), Serdes.String()));
+        alphabetsAbbreviationKStream.print(Printed.<String, String>toSysOut().withLabel("alphabets-abbreviations"));
+
+        KStream<String, String> alphabetsKStream = streamsBuilder.stream(ALPHABETS_TOPIC, Consumed.with(Serdes.String(), Serdes.String()));
+        alphabetsKStream.print(Printed.<String, String>toSysOut().withLabel("alphabets"));
+
+        ValueJoiner<String, String, Alphabet> valueJoiner = Alphabet::new;
+        JoinWindows fiveSecondWindow = JoinWindows.ofTimeDifferenceWithNoGrace(Duration.ofSeconds(5)); // 5th second is not inclusive
+        StreamJoined<String, String, String> joinedParams = StreamJoined.with(Serdes.String(), Serdes.String(), Serdes.String()).withName("alphabets-stream-join").withStoreName("alphabets-stream-join");
+
+        KStream<String, Alphabet> joinedKStream = alphabetsAbbreviationKStream.join(alphabetsKStream, valueJoiner, fiveSecondWindow, joinedParams);
+        joinedKStream.print(Printed.<String, Alphabet>toSysOut().withLabel("alphabets-with-abbreviations-kstream"));
+
+//        [alphabets-with-abbreviations-kstream]: A, Alphabet[abbreviation=Apple, description=A is the first letter in English Alphabets.]
+//        [alphabets-with-abbreviations-kstream]: B, Alphabet[abbreviation=Bus, description=B is the second letter in English Alphabets.]
+//        [alphabets-with-abbreviations-kstream]: C, Alphabet[abbreviation=Cat, description=C is the third letter in English Alphabets.]
 
         return streamsBuilder.build();
     }
