@@ -13,8 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.support.serializer.JsonSerde;
 import org.springframework.stereotype.Component;
 
-import static com.kafka.greetings.stream.springboot.config.GreetingsStreamsConfig.GREETINGS;
-import static com.kafka.greetings.stream.springboot.config.GreetingsStreamsConfig.GREETINGS_OUTPUT;
+import static com.kafka.greetings.stream.springboot.config.GreetingsStreamsConfig.GREETINGS_TOPIC;
+import static com.kafka.greetings.stream.springboot.config.GreetingsStreamsConfig.GREETINGS_OUTPUT_TOPIC;
 
 @Component
 @Slf4j
@@ -29,7 +29,7 @@ public class GreetingsStreamsTopology {
 
     @Autowired
     public void process(StreamsBuilder streamsBuilder) {
-        KStream<String, Greeting> greetingsStream = streamsBuilder.stream(GREETINGS, Consumed.with(Serdes.String(), new JsonSerde<>(Greeting.class, objectMapper)));
+        KStream<String, Greeting> greetingsStream = streamsBuilder.stream(GREETINGS_TOPIC, Consumed.with(Serdes.String(), new JsonSerde<>(Greeting.class, objectMapper)));
         greetingsStream.print(Printed.<String, Greeting>toSysOut().withLabel("greeting-streams"));
 
         KStream<String, Greeting> modifiedStream = greetingsStream.mapValues((readOnlyKey, value) -> {
@@ -45,6 +45,6 @@ public class GreetingsStreamsTopology {
         });
         modifiedStream.print(Printed.<String, Greeting>toSysOut().withLabel("modified-greeting-streams"));
 
-        modifiedStream.to(GREETINGS_OUTPUT, Produced.with(Serdes.String(), new JsonSerde<>(Greeting.class, objectMapper)));
+        modifiedStream.to(GREETINGS_OUTPUT_TOPIC, Produced.with(Serdes.String(), new JsonSerde<>(Greeting.class, objectMapper)));
     }
 }

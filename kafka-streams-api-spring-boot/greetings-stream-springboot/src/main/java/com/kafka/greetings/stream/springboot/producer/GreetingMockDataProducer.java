@@ -7,6 +7,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.extern.slf4j.Slf4j;
 
 import com.kafka.greetings.stream.springboot.domain.Greeting;
+import org.apache.kafka.clients.producer.RecordMetadata;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -34,14 +35,11 @@ public class GreetingMockDataProducer {
                 "Hello, Good Night!"
         );
 
-        greetings
-                .forEach(greeting -> {
-                    publishMessageSync(GREETINGS, null, greeting);
-                });
+        greetings.forEach(greeting -> publishMessageSync(GREETINGS, null, greeting));
     }
 
     private static void englishGreetings(ObjectMapper objectMapper) {
-        var englishGreetings = List.of(
+        List<Greeting> englishGreetings = List.of(
 //                new Greeting("Error", LocalDateTime.now()),
                 new Greeting("Hello, Good Morning!", LocalDateTime.now()),
                 new Greeting("Hello, Good Evening!", LocalDateTime.now()),
@@ -50,8 +48,8 @@ public class GreetingMockDataProducer {
         englishGreetings
                 .forEach(greeting -> {
                     try {
-                        var greetingJSON = objectMapper.writeValueAsString(greeting);
-                        var recordMetaData = publishMessageSync(GREETINGS, null, greetingJSON);
+                        String greetingJSON = objectMapper.writeValueAsString(greeting);
+                        RecordMetadata recordMetaData = publishMessageSync(GREETINGS, null, greetingJSON);
                         log.info("Published the alphabet message : {} ", recordMetaData);
                     } catch (JsonProcessingException e) {
                         throw new RuntimeException(e);

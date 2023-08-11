@@ -27,8 +27,8 @@ import java.util.Map;
 @Configuration
 public class GreetingsStreamsConfig {
 
-    public static String GREETINGS = "greetings";
-    public static String GREETINGS_OUTPUT = "greetings-output";
+    public static String GREETINGS_TOPIC = "greetings";
+    public static String GREETINGS_OUTPUT_TOPIC = "greetings-output";
 
     @Autowired
     private KafkaProperties kafkaProperties;
@@ -73,7 +73,7 @@ public class GreetingsStreamsConfig {
 
     @Bean
     public NewTopic greetingsTopic() {
-        return TopicBuilder.name(GREETINGS)
+        return TopicBuilder.name(GREETINGS_TOPIC)
                 .partitions(2)
                 .replicas(1)
                 .build();
@@ -81,7 +81,7 @@ public class GreetingsStreamsConfig {
 
     @Bean
     public NewTopic greetingsOutputTopic() {
-        return TopicBuilder.name(GREETINGS_OUTPUT)
+        return TopicBuilder.name(GREETINGS_OUTPUT_TOPIC)
                 .partitions(2)
                 .replicas(1)
                 .build();
