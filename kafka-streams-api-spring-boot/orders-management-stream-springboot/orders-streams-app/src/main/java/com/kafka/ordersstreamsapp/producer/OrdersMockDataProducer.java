@@ -27,8 +27,8 @@ public class OrdersMockDataProducer {
                 .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
 
 
-        publishOrders(objectMapper, buildOrders());
-        //publishBulkOrders(objectMapper);
+//        publishOrders(objectMapper, buildOrders());
+        publishBulkOrders(objectMapper);
 
         /**
          * To test grace period.
@@ -38,14 +38,12 @@ public class OrdersMockDataProducer {
          *      - This should allow the aggregation to be added to the window before
          *
          */
-        publishOrdersToTestGrace(objectMapper, buildOrdersToTestGrace());
+//        publishOrdersToTestGrace(objectMapper, buildOrdersToTestGrace());
 
 
         //Future and Old Records
 //        publishFutureRecords(objectMapper);
 //        publishExpiredRecords(objectMapper);
-
-
     }
 
     private static void publishFutureRecords(ObjectMapper objectMapper) {
@@ -186,16 +184,15 @@ public class OrdersMockDataProducer {
                 order2,
                 order3
         );
-
     }
 
     private static List<Order> buildOrders() {
-        var orderItems = List.of(
+        List<OrderLineItem> orderItems = List.of(
                 new OrderLineItem("Bananas", 2, new BigDecimal("2.00")),
                 new OrderLineItem("Iphone Charger", 1, new BigDecimal("25.00"))
         );
 
-        var orderItemsRestaurant = List.of(
+        List<OrderLineItem> orderItemsRestaurant = List.of(
                 new OrderLineItem("Pizza", 2, new BigDecimal("12.00")),
                 new OrderLineItem("Coffee", 1, new BigDecimal("3.00"))
         );
@@ -205,7 +202,6 @@ public class OrdersMockDataProducer {
                 OrderType.GENERAL,
                 orderItems,
                 LocalDateTime.now()
-                //LocalDateTime.now(ZoneId.of("UTC"))
         );
 
         var order2 = new Order(54321, "store_1234",
@@ -213,7 +209,6 @@ public class OrdersMockDataProducer {
                 OrderType.RESTAURANT,
                 orderItemsRestaurant,
                 LocalDateTime.now()
-                //LocalDateTime.now(ZoneId.of("UTC"))
         );
 
         var order3 = new Order(12345, "store_4567",
@@ -222,7 +217,6 @@ public class OrdersMockDataProducer {
                 orderItems,
                 LocalDateTime.now()
                 //LocalDateTime.parse("2023-02-25T05:02:01")
-                //LocalDateTime.now(ZoneId.of("UTC"))
         );
 
         var order4 = new Order(12345, "store_4567",
@@ -231,15 +225,9 @@ public class OrdersMockDataProducer {
                 orderItems,
                 LocalDateTime.now()
                 //LocalDateTime.parse("2023-02-25T05:02:01")
-                //LocalDateTime.now(ZoneId.of("UTC"))
         );
 
-        return List.of(
-                order1,
-                order2,
-                order3,
-                order4
-        );
+        return List.of(order1, order2, order3, order4);
     }
 
     private static List<Order> buildOrdersToTestGrace() {
@@ -258,7 +246,6 @@ public class OrdersMockDataProducer {
                 OrderType.GENERAL,
                 orderItems,
                 LocalDateTime.parse("2023-02-27T05:40:58")
-                //LocalDateTime.now(ZoneId.of("UTC"))
         );
 
         var order2 = new Order(54321, "store_1234",
@@ -266,48 +253,36 @@ public class OrdersMockDataProducer {
                 OrderType.RESTAURANT,
                 orderItemsRestaurant,
                 LocalDateTime.parse("2023-02-27T05:40:58")
-                //LocalDateTime.now(ZoneId.of("UTC"))
         );
 
         var order3 = new Order(12345, "store_4567",
                 new BigDecimal("27.00"),
                 OrderType.GENERAL,
                 orderItems,
-                //LocalDateTime.now()
                 LocalDateTime.parse("2023-02-27T05:40:58")
-                //LocalDateTime.now(ZoneId.of("UTC"))
         );
 
         var order4 = new Order(12345, "store_4567",
                 new BigDecimal("27.00"),
                 OrderType.RESTAURANT,
                 orderItems,
-                //LocalDateTime.now()
                 LocalDateTime.parse("2023-02-27T05:40:58")
-                //LocalDateTime.now(ZoneId.of("UTC"))
         );
 
-        return List.of(
-                order1,
-                order2,
-                order3,
-                order4
-        );
+        return List.of(order1, order2, order3, order4);
     }
 
     private static void publishBulkOrders(ObjectMapper objectMapper) throws InterruptedException {
-
         int count = 0;
         while (count < 100) {
             var orders = buildOrders();
             publishOrders(objectMapper, orders);
-            sleep(1000);
-            count++;
+            sleep(100);
+            count ++;
         }
     }
 
     private static void publishOrdersToTestGrace(ObjectMapper objectMapper, List<Order> orders) {
-
         orders
                 .forEach(order -> {
                     try {
@@ -325,7 +300,6 @@ public class OrdersMockDataProducer {
     }
 
     private static void publishOrders(ObjectMapper objectMapper, List<Order> orders) {
-
         orders
                 .forEach(order -> {
                     try {
@@ -341,6 +315,4 @@ public class OrdersMockDataProducer {
                     }
                 });
     }
-
-
 }

@@ -49,7 +49,10 @@ public class OrdersTopology {
 
     @Autowired
     public void process(StreamsBuilder streamsBuilder) {
-        KStream<String, Order> orderKStream = streamsBuilder.stream(ORDERS_TOPIC, Consumed.with(Serdes.String(), new JsonSerde<>(Order.class)).withTimestampExtractor(new OrderTimeStampExtractor()));
+        KStream<String, Order> orderKStream = streamsBuilder.stream(ORDERS_TOPIC, Consumed.with(Serdes.String(), new JsonSerde<>(Order.class))
+                .withTimestampExtractor(new OrderTimeStampExtractor()))
+                        .selectKey((key, value) -> value.locationId());
+
         orderKStream.print(Printed.<String, Order>toSysOut().withLabel("orders@source"));
 
         KTable<String, Store> storesKTable = streamsBuilder.table(STORES_TOPIC, Consumed.with(Serdes.String(), new JsonSerde<>(Store.class)));
@@ -77,17 +80,16 @@ public class OrdersTopology {
         return (key, order) -> order.orderType() == orderType;
     }
 
-    private static void aggregateOrdersByCount(KStream<String, Order> generalOrdersStream, String storeName, KTable<String, Store> storeKTable) {
-        KTable<String, Long> ordersCountPerStore = generalOrdersStream
+    private static void aggregateOrdersByCount(KStream<String, Order> ordersStream, String storeName, KTable<String, Store> storeKTable) {
+        KTable<String, Long> ordersCountPerStoreKTable = ordersStream
 //                .map((key, value) -> KeyValue.pair(value.locationId(), value))
                 .groupByKey(Grouped.with(Serdes.String(), new JsonSerde<>(Order.class)))
                 .count(Named.as(storeName), Materialized.as(storeName));
-
-        ordersCountPerStore.toStream().print(Printed.<String,Long>toSysOut().withLabel(storeName));
+        ordersCountPerStoreKTable.toStream().print(Printed.<String,Long>toSysOut().withLabel(storeName));
 
         ValueJoiner<Long, Store, TotalCountWithAddress> valueJoiner = TotalCountWithAddress::new;
 
-        KTable<String, TotalCountWithAddress> joinedKTable = ordersCountPerStore.join(storeKTable, valueJoiner);
+        KTable<String, TotalCountWithAddress> joinedKTable = ordersCountPerStoreKTable.join(storeKTable, valueJoiner);
         joinedKTable.toStream().print(Printed.<String, TotalCountWithAddress>toSysOut().withLabel(storeName + "-bystore"));
     }
 
@@ -128,8 +130,7 @@ public class OrdersTopology {
         revenueTable.toStream().print(Printed.<String,TotalRevenue>toSysOut().withLabel(storeName));
 
         ValueJoiner<TotalRevenue, Store, TotalRevenueWithAddress> valueJoiner = TotalRevenueWithAddress::new;
-
-        var revenueWithStoreTable = revenueTable.leftJoin(storesKTable, valueJoiner);
+        KTable<String, TotalRevenueWithAddress> revenueWithStoreTable = revenueTable.leftJoin(storesKTable, valueJoiner);
 
         revenueWithStoreTable.toStream().print(Printed.<String,TotalRevenueWithAddress>toSysOut().withLabel(storeName + "-bystore"));
     }
@@ -137,12 +138,9 @@ public class OrdersTopology {
     private void aggregateOrdersRevenueByTimeWindows(KStream<String, Order> ordersKStream, String storeName, KTable<String, Store> storesKTable) {
         var windowSize = 15;
         Duration windowSizeDuration = Duration.ofSeconds(windowSize);
-//        Duration graceWindowsSize = Duration.ofSeconds(5);
-
         TimeWindows timeWindows = TimeWindows.ofSizeWithNoGrace(windowSizeDuration);
 
         Initializer<TotalRevenue> totalRevenueInitializer = TotalRevenue::new;
-
         Aggregator<String, Order, TotalRevenue> aggregator = (key,order, totalRevenue) -> totalRevenue.updateRunningRevenue(key, order);
 
         var revenueTable = ordersKStream
@@ -163,7 +161,6 @@ public class OrdersTopology {
                 .print(Printed.<Windowed<String>,TotalRevenue>toSysOut().withLabel(storeName));
 
         ValueJoiner<TotalRevenue, Store, TotalRevenueWithAddress> valueJoiner = TotalRevenueWithAddress::new;
-
         Joined<String, TotalRevenue, Store> joinedParams = Joined.with(Serdes.String(), new JsonSerde<>(TotalRevenue.class), new JsonSerde<>(Store.class));
 
         revenueTable

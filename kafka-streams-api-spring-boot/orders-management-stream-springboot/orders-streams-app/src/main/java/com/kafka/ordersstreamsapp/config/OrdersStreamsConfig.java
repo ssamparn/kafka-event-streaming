@@ -24,11 +24,12 @@ import java.util.Map;
 @Configuration
 public class OrdersStreamsConfig {
 
+    public static final String STORES_TOPIC = "stores";
     public static final String ORDERS_TOPIC = "orders";
     public static final String GENERAL_ORDERS_TOPIC = "general-orders";
     public static final String GENERAL_ORDERS_COUNT_TOPIC = "general-orders-count";
-    public static final String GENERAL_ORDERS_COUNT_WINDOWS_TOPIC = "general-orders-count-window";
     public static final String GENERAL_ORDERS_REVENUE_TOPIC = "general-orders-revenue";
+    public static final String GENERAL_ORDERS_COUNT_WINDOWS_TOPIC = "general-orders-count-window";
     public static final String GENERAL_ORDERS_REVENUE_WINDOWS_TOPIC = "general-orders-revenue-window";
 
     public static final String RESTAURANT_ORDERS_TOPIC = "restaurant-orders";
@@ -36,7 +37,6 @@ public class OrdersStreamsConfig {
     public static final String RESTAURANT_ORDERS_REVENUE_TOPIC = "restaurant-orders-revenue";
     public static final String RESTAURANT_ORDERS_COUNT_WINDOWS_TOPIC = "restaurant-orders-count-window";
     public static final String RESTAURANT_ORDERS_REVENUE_WINDOWS_TOPIC = "restaurant-orders-revenue-window";
-    public static final String STORES_TOPIC = "stores";
 
     @Autowired
     private KafkaProperties kafkaProperties;
