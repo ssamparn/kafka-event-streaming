@@ -24,7 +24,9 @@ public class KafkaStreamJoinApplication {
 //        Topology kTableTopology = JoinOperatorsTopology.buildTopologyForJoiningKStreamWithKTable();
 //        Topology kTableTopology = JoinOperatorsTopology.buildTopologyForJoiningKStreamWithGlobalKTable();
 //        Topology kTableTopology = JoinOperatorsTopology.buildTopologyForJoiningKTableWithAnotherKTable();
-        Topology kTableTopology = JoinOperatorsTopology.buildTopologyForJoiningKStreamWithAnotherKStream();
+//        Topology kTableTopology = JoinOperatorsTopology.buildTopologyForJoiningKStreamWithAnotherKStream();
+//        Topology kTableTopology = JoinOperatorsTopology.buildTopologyForLeftJoin();
+        Topology kTableTopology = JoinOperatorsTopology.buildTopologyForOuterJoin();
 
                 Properties config = new Properties();
         config.put(StreamsConfig.APPLICATION_ID_CONFIG, "joins"); // consumer group

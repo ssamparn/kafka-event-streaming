@@ -7,7 +7,6 @@ import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.Topology;
 import org.apache.kafka.streams.kstream.Consumed;
 import org.apache.kafka.streams.kstream.GlobalKTable;
-import org.apache.kafka.streams.kstream.Grouped;
 import org.apache.kafka.streams.kstream.JoinWindows;
 import org.apache.kafka.streams.kstream.KStream;
 import org.apache.kafka.streams.kstream.KTable;
@@ -19,7 +18,6 @@ import org.apache.kafka.streams.kstream.ValueJoiner;
 
 import java.time.Duration;
 
-import static com.kafka.streams.stateful.utils.StatefulKafkaStreamsUtil.AGGREGATE_TOPIC;
 import static com.kafka.streams.stateful.utils.StatefulKafkaStreamsUtil.ALPHABETS_ABBREVATIONS_TOPIC;
 import static com.kafka.streams.stateful.utils.StatefulKafkaStreamsUtil.ALPHABETS_TOPIC;
 
@@ -178,6 +176,52 @@ public class JoinOperatorsTopology {
 //        [alphabets-with-abbreviations-kstream]: A, Alphabet[abbreviation=Apple, description=A is the first letter in English Alphabets.]
 //        [alphabets-with-abbreviations-kstream]: B, Alphabet[abbreviation=Bus, description=B is the second letter in English Alphabets.]
 //        [alphabets-with-abbreviations-kstream]: C, Alphabet[abbreviation=Cat, description=C is the third letter in English Alphabets.]
+
+        return streamsBuilder.build();
+    }
+
+    public static Topology buildTopologyForLeftJoin() {
+        StreamsBuilder streamsBuilder = new StreamsBuilder();
+
+        // Note: Join is triggered when there is a record on the left side of the join is received, even if there is no matching record received on the right side of the join.
+        // This will still produce a combined record. The combined record will have a null value for the right side of the value.
+
+        KStream<String, String> alphabetsAbbreviationKStream = streamsBuilder.stream(ALPHABETS_ABBREVATIONS_TOPIC, Consumed.with(Serdes.String(), Serdes.String()));
+        alphabetsAbbreviationKStream.print(Printed.<String, String>toSysOut().withLabel("alphabets-abbreviations"));
+
+        KStream<String, String> alphabetsKStream = streamsBuilder.stream(ALPHABETS_TOPIC, Consumed.with(Serdes.String(), Serdes.String()));
+        alphabetsKStream.print(Printed.<String, String>toSysOut().withLabel("alphabets"));
+
+        ValueJoiner<String, String, Alphabet> valueJoiner = Alphabet::new;
+        JoinWindows fiveSecondWindow = JoinWindows.ofTimeDifferenceWithNoGrace(Duration.ofSeconds(5)); // 5th second is not inclusive
+        StreamJoined<String, String, String> joinedParams = StreamJoined.with(Serdes.String(), Serdes.String(), Serdes.String()).withName("alphabets-stream-join").withStoreName("alphabets-stream-join");
+
+        KStream<String, Alphabet> joinedKStream = alphabetsAbbreviationKStream.leftJoin(alphabetsKStream, valueJoiner, fiveSecondWindow, joinedParams);
+        joinedKStream.print(Printed.<String, Alphabet>toSysOut().withLabel("alphabets-with-abbreviations-kstream"));
+
+        return streamsBuilder.build();
+    }
+
+    public static Topology buildTopologyForOuterJoin() {
+
+        StreamsBuilder streamsBuilder = new StreamsBuilder();
+
+        // Note: Outer Join is triggered when there is a record on either side of the join is received.
+        // When a record is received on either side of the join, and if there is no matching record on the other side of the join,
+        // then the combined record will have a null value for either side of the missing value.
+
+        KStream<String, String> alphabetsAbbreviationKStream = streamsBuilder.stream(ALPHABETS_ABBREVATIONS_TOPIC, Consumed.with(Serdes.String(), Serdes.String()));
+        alphabetsAbbreviationKStream.print(Printed.<String, String>toSysOut().withLabel("alphabets-abbreviations"));
+
+        KStream<String, String> alphabetsKStream = streamsBuilder.stream(ALPHABETS_TOPIC, Consumed.with(Serdes.String(), Serdes.String()));
+        alphabetsKStream.print(Printed.<String, String>toSysOut().withLabel("alphabets"));
+
+        ValueJoiner<String, String, Alphabet> valueJoiner = Alphabet::new;
+        JoinWindows fiveSecondWindow = JoinWindows.ofTimeDifferenceWithNoGrace(Duration.ofSeconds(5)); // 5th second is not inclusive
+        StreamJoined<String, String, String> joinedParams = StreamJoined.with(Serdes.String(), Serdes.String(), Serdes.String()).withName("alphabets-stream-join").withStoreName("alphabets-stream-join");
+
+        KStream<String, Alphabet> joinedKStream = alphabetsAbbreviationKStream.outerJoin(alphabetsKStream, valueJoiner, fiveSecondWindow, joinedParams);
+        joinedKStream.print(Printed.<String, Alphabet>toSysOut().withLabel("alphabets-with-abbreviations-kstream"));
 
         return streamsBuilder.build();
     }

@@ -1,6 +1,5 @@
 package com.kafka.streams.stateful.producer;
 
-import com.kafka.streams.stateful.utils.ProducerUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.producer.ProducerRecord;
 
@@ -20,7 +19,8 @@ public class JoinsMockDataProducer {
         Map<String, String> alphabetMap = Map.of(
                 "A", "A is the first letter in English Alphabets.",
                 "B", "B is the second letter in English Alphabets.",
-                "C", "C is the third letter in English Alphabets.");
+                "C", "C is the third letter in English Alphabets.",
+                "E", "E is the fifth letter in English Alphabets.");
 
         publishMessages(alphabetMap, ALPHABETS_TOPIC);
 
@@ -29,7 +29,8 @@ public class JoinsMockDataProducer {
         alphabetAbbrevationMap = Map.of(
                 "A", "Apple",
                 "B", "Bus",
-                "C", "Cat"
+                "C", "Cat",
+                "D", "Dog"
         );
         publishMessages(alphabetAbbrevationMap, ALPHABETS_ABBREVATIONS_TOPIC);
 
