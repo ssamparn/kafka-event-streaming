@@ -17,7 +17,7 @@ public class CoffeeOrderUtil {
     public static CoffeeOrder buildNewCoffeeOrder() {
         return CoffeeOrder.newBuilder()
                 .setId(randomId())
-                .setName("Sashank Samantray")
+                .setName("Sashank")
                 .setStore(generateStore())
                 .setOrderLineItems(generateOrderLineItems())
                 .setOrderedTime(Instant.now())

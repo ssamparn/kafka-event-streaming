@@ -2,18 +2,21 @@
 version: '3.8'
 services:
   zookeeper:
-    image: confluentinc/cp-zookeeper:7.1.0
+    image: confluentinc/cp-zookeeper:7.2.5
     platform: linux/amd64
     hostname: zookeeper
     container_name: zookeeper
     ports:
       - "2181:2181"
     environment:
+      ZOOKEEPER_SERVER_ID: 1
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
+      ZOOKEEPER_INIT_LIMIT: 5
+      ZOOKEEPER_SYNC_LIMIT: 2
 
   broker:
-    image: confluentinc/cp-server:7.1.0
+    image: confluentinc/cp-server:7.2.5
     platform: linux/amd64
     hostname: broker
     container_name: broker
@@ -44,7 +47,7 @@ services:
 
 
   schema-registry:
-    image: confluentinc/cp-schema-registry:7.1.0
+    image: confluentinc/cp-schema-registry:7.2.5
     platform: linux/amd64
     hostname: schema-registry
     container_name: schema-registry

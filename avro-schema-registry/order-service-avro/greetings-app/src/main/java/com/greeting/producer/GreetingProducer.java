@@ -39,7 +39,7 @@ public class GreetingProducer {
                 new ProducerRecord<>(GREETING_TOPIC, message);
 
         RecordMetadata recordMetadata = producer.send(producerRecord).get();
-        log.info("recordMetaData : " + recordMetadata);
+        log.info("recordMetaData : " + recordMetadata.toString());
     }
 
     private static Greeting buildGreeting(String message) {
