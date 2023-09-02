@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>schema</artifactId>
-    <name>Schema</name>
+    <name>Order Service Avro Schema</name>
 
     <dependencies>
         <dependency>

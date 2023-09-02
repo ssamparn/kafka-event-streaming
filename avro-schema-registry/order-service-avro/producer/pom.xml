@@ -11,7 +11,7 @@
 
     <artifactId>producer</artifactId>
     <version>${order.service.avro.version}</version>
-    <name>Producer</name>
+    <name>Order Service Avro Producer</name>
 
     <dependencies>
         <dependency>
