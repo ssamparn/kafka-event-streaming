@@ -1,0 +1,602 @@
+[
+  {
+    "itemCode": 203,
+    "itemDescription": "Bunk bed",
+    "itemPrice": "1686",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 208,
+    "itemDescription": "Canopy bed",
+    "itemPrice": "508",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 213,
+    "itemDescription": "Infant bed",
+    "itemPrice": "1755",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 218,
+    "itemDescription": "Sofa bed",
+    "itemPrice": "895",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 223,
+    "itemDescription": "Hammock",
+    "itemPrice": "1210",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 228,
+    "itemDescription": "Divan",
+    "itemPrice": "1083",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 233,
+    "itemDescription": "Coffee table",
+    "itemPrice": "1055",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 238,
+    "itemDescription": "Dining table",
+    "itemPrice": "1582",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 243,
+    "itemDescription": "Folding table",
+    "itemPrice": "738",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 248,
+    "itemDescription": "TV tray table",
+    "itemPrice": "1947",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 253,
+    "itemDescription": "Bathroom cabinet",
+    "itemPrice": "1513",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 258,
+    "itemDescription": "Closet",
+    "itemPrice": "1687",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 263,
+    "itemDescription": "Kitchen cabinet",
+    "itemPrice": "1050",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 268,
+    "itemDescription": "Floating shelf",
+    "itemPrice": "1894",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 273,
+    "itemDescription": "Bedroom set",
+    "itemPrice": "842",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 278,
+    "itemDescription": "Dining set",
+    "itemPrice": "1940",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 283,
+    "itemDescription": "Portable Lamps",
+    "itemPrice": "2236",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 288,
+    "itemDescription": "Hutch",
+    "itemPrice": "1812",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 293,
+    "itemDescription": "Bar stool",
+    "itemPrice": "1148",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 298,
+    "itemDescription": "Bardic chair",
+    "itemPrice": "1649",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 303,
+    "itemDescription": "Bench",
+    "itemPrice": "2251",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 308,
+    "itemDescription": "Butterfly chair",
+    "itemPrice": "857",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 313,
+    "itemDescription": "Brewster Chair",
+    "itemPrice": "2195",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 318,
+    "itemDescription": "Bofinger chair",
+    "itemPrice": "1119",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 323,
+    "itemDescription": "Chiavari chair",
+    "itemPrice": "653",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 328,
+    "itemDescription": "Dining chair",
+    "itemPrice": "1223",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 333,
+    "itemDescription": "Gaming chair",
+    "itemPrice": "1902",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 338,
+    "itemDescription": "Kneeling chairs",
+    "itemPrice": "442",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 343,
+    "itemDescription": "Massage chair",
+    "itemPrice": "1354",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 348,
+    "itemDescription": "Navy chair",
+    "itemPrice": "1998",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 353,
+    "itemDescription": "Recliner",
+    "itemPrice": "1585",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 358,
+    "itemDescription": "Restraint chair",
+    "itemPrice": "1943",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 363,
+    "itemDescription": "Rocking chair",
+    "itemPrice": "2021",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 368,
+    "itemDescription": "Stool",
+    "itemPrice": "888",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 373,
+    "itemDescription": "Latex Mattress",
+    "itemPrice": "1313",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 378,
+    "itemDescription": "Air Bed",
+    "itemPrice": "2263",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 383,
+    "itemDescription": "Innerspring Mattress",
+    "itemPrice": "655",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 388,
+    "itemDescription": "Memory Foam",
+    "itemPrice": "1884",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 393,
+    "itemDescription": "Hybrid Mattress",
+    "itemPrice": "2217",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 398,
+    "itemDescription": "Latex Mattress",
+    "itemPrice": "773",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 403,
+    "itemDescription": "Adjustable Air Mattress",
+    "itemPrice": "1417",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 408,
+    "itemDescription": "Confidante",
+    "itemPrice": "1242",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 413,
+    "itemDescription": "Slipcover",
+    "itemPrice": "1896",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 418,
+    "itemDescription": "Wing chair",
+    "itemPrice": "1431",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 423,
+    "itemDescription": "Quilt",
+    "itemPrice": "1485",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 428,
+    "itemDescription": "Cocktail glass",
+    "itemPrice": "1422",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 433,
+    "itemDescription": "Depression glass",
+    "itemPrice": "1950",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 438,
+    "itemDescription": "Lead glass",
+    "itemPrice": "2069",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 443,
+    "itemDescription": "Margarita glass",
+    "itemPrice": "2475",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 448,
+    "itemDescription": "Martini glass",
+    "itemPrice": "2263",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 453,
+    "itemDescription": "Shot glass",
+    "itemPrice": "674",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 458,
+    "itemDescription": "Wine glass",
+    "itemPrice": "1644",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 463,
+    "itemDescription": "Cookie jars",
+    "itemPrice": "793",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 468,
+    "itemDescription": "Lunch box",
+    "itemPrice": "1467",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 473,
+    "itemDescription": "Mason jars",
+    "itemPrice": "1358",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 478,
+    "itemDescription": "Teapot",
+    "itemPrice": "885",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 483,
+    "itemDescription": "Teacups and saucers",
+    "itemPrice": "1781",
+    "itemQty": 1
+  },
+  {
+    "itemCode": 488,
+    "itemDescription": "Bread knife",
+    "itemPrice": "1077",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 493,
+    "itemDescription": "Boning knife",
+    "itemPrice": "513",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 498,
+    "itemDescription": "Carving knifes",
+    "itemPrice": "1424",
+    "itemQty": 3
+  },
+  {
+    "itemCode": 503,
+    "itemDescription": "Chef's knife",
+    "itemPrice": "1973",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 508,
+    "itemDescription": "Kitchen knife",
+    "itemPrice": "2483",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 513,
+    "itemDescription": "Flip clock",
+    "itemPrice": "1259",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 518,
+    "itemDescription": "Hourglass",
+    "itemPrice": "1598",
+    "itemQty": 3
+  },
+  {
+    "itemCode": 523,
+    "itemDescription": "Oil-lamp clock",
+    "itemPrice": "1371",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 528,
+    "itemDescription": "Projection clock",
+    "itemPrice": "2365",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 533,
+    "itemDescription": "Rolling ball clock",
+    "itemPrice": "1651",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 538,
+    "itemDescription": "Grandmother clock",
+    "itemPrice": "1301",
+    "itemQty": 1
+  },
+  {
+    "itemCode": 543,
+    "itemDescription": "Lighthouse clock",
+    "itemPrice": "636",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 548,
+    "itemDescription": "Cartel clock",
+    "itemPrice": "1500",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 553,
+    "itemDescription": "Banjo clock",
+    "itemPrice": "1651",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 558,
+    "itemDescription": "Balloon clock",
+    "itemPrice": "1633",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 563,
+    "itemDescription": "Chiming clock",
+    "itemPrice": "2168",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 568,
+    "itemDescription": "Pinch Pleated Curtains",
+    "itemPrice": "1718",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 573,
+    "itemDescription": "Eyelet Curtains",
+    "itemPrice": "642",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 578,
+    "itemDescription": "Goblet Pleat Curtains",
+    "itemPrice": "1765",
+    "itemQty": 2
+  },
+  {
+    "itemCode": 583,
+    "itemDescription": "Tab Top Curtains",
+    "itemPrice": "1329",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 588,
+    "itemDescription": "Sheer Curtains",
+    "itemPrice": "801",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 593,
+    "itemDescription": "Hanging curtains",
+    "itemPrice": "1896",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 598,
+    "itemDescription": "Grommet Curtains",
+    "itemPrice": "914",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 603,
+    "itemDescription": "Sheer Curtains",
+    "itemPrice": "1282",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 608,
+    "itemDescription": "Pleated Drapes",
+    "itemPrice": "1684",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 613,
+    "itemDescription": "Goblet Pleat Drapes",
+    "itemPrice": "1583",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 618,
+    "itemDescription": "Pencil Pleat Drapes",
+    "itemPrice": "1140",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 623,
+    "itemDescription": " Box Pleat Drapes",
+    "itemPrice": "1683",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 628,
+    "itemDescription": "Window Scarf",
+    "itemPrice": "1774",
+    "itemQty": 3
+  },
+  {
+    "itemCode": 633,
+    "itemDescription": "Cafe Curtains",
+    "itemPrice": "796",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 638,
+    "itemDescription": "Baster",
+    "itemPrice": "1214",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 643,
+    "itemDescription": "Blow torch",
+    "itemPrice": "1955",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 648,
+    "itemDescription": "Bottle opener",
+    "itemPrice": "321",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 653,
+    "itemDescription": "Browning tray",
+    "itemPrice": "375",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 658,
+    "itemDescription": "Chinois",
+    "itemPrice": "567",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 663,
+    "itemDescription": "Corkscrew",
+    "itemPrice": "983",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 668,
+    "itemDescription": "Crab cracker",
+    "itemPrice": "785",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 673,
+    "itemDescription": "Dough scraper",
+    "itemPrice": "980",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 678,
+    "itemDescription": "Fillet knife",
+    "itemPrice": "350",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 683,
+    "itemDescription": "Grater",
+    "itemPrice": "370",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 688,
+    "itemDescription": "Ladle",
+    "itemPrice": "570",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 693,
+    "itemDescription": "Mandoline",
+    "itemPrice": "250",
+    "itemQty": 0
+  },
+  {
+    "itemCode": 698,
+    "itemDescription": "Meat grinder",
+    "itemPrice": "1250",
+    "itemQty": 0
+  }
+]
