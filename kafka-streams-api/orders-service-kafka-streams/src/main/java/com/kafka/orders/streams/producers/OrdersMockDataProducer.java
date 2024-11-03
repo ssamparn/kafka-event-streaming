@@ -47,13 +47,13 @@ public class OrdersMockDataProducer {
     }
 
     private static void publishBulkOrders(ObjectMapper objectMapper) throws InterruptedException {
-
         int count = 0;
+
         while (count < 100) {
             var orders = buildOrders();
             publishOrders(objectMapper, orders);
             sleep(1000);
-            count++;
+            count ++;
         }
     }
 
