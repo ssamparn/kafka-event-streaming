@@ -12,18 +12,15 @@ import java.util.stream.Collectors;
 public class OrdersKafkaStreamUtil {
 
     public static final String ORDERS_TOPIC = "orders";
+    public static final String STORES_TOPIC = "stores";
     public static final String GENERAL_ORDERS_TOPIC = "general-orders";
-
     public static final String RESTAURANT_ORDERS_TOPIC = "restaurant-orders";
 
     public static final String GENERAL_ORDERS_COUNT_TOPIC = "general-orders-count";
-
     public static final String RESTAURANT_ORDERS_COUNT_TOPIC = "restaurant-orders-count";
+
     public static final String GENERAL_ORDERS_REVENUE_TOPIC = "general-orders-revenue";
-
     public static final String RESTAURANT_ORDERS_REVENUE_TOPIC = "restaurant-orders-revenue";
-
-    public static final String STORES = "stores";
 
     public static void createTopics(Properties config, List<String> topics) {
 
