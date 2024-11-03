@@ -1,0 +1,18 @@
+{
+  "type": "object",
+  "javaType": "com.spring.event.streaming.generated.Notification",
+  "properties": {
+    "InvoiceNumber": {
+      "type": "string"
+    },
+    "CustomerCardNo": {
+      "type": "string"
+    },
+    "TotalAmount": {
+      "type": "number"
+    },
+    "EarnedLoyaltyPoints": {
+      "type": "number"
+    }
+  }
+}

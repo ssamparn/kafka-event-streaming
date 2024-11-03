@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "javaType": "com.spring.event.streaming.generated.LineItem",
+  "properties": {
+    "ItemCode": {
+      "type": "string"
+    },
+    "ItemDescription": {
+      "type": "string"
+    },
+    "ItemPrice": {
+      "type": "number"
+    },
+    "ItemQty": {
+      "type": "integer"
+    },
+    "TotalValue": {
+      "type": "number"
+    }
+  }
+}

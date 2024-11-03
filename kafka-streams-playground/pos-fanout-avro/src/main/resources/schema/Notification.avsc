@@ -1,0 +1,35 @@
+{
+  "namespace": "com.spring.event.streaming.avro.generated",
+  "type": "record",
+  "name": "Notification",
+  "fields": [
+    {
+      "name": "InvoiceNumber",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    {
+      "name": "CustomerCardNo",
+      "type": [
+        "null",
+        "double"
+      ]
+    },
+    {
+      "name": "TotalAmount",
+      "type": [
+        "null",
+        "double"
+      ]
+    },
+    {
+      "name": "EarnedLoyaltyPoints",
+      "type": [
+        "null",
+        "double"
+      ]
+    }
+  ]
+}
