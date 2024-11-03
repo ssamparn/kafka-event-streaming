@@ -12,9 +12,9 @@ import java.util.stream.Collectors;
 public class StatefulKafkaStreamsUtil {
 
     public static String AGGREGATE_TOPIC = "aggregate";
-
     public static String ALPHABETS_TOPIC = "alphabets"; // A => First letter in the english alphabet
     public static String ALPHABETS_ABBREVATIONS_TOPIC = "alphabets-abbreviations"; // A => Apple
+    public static final String WINDOW_WORDS_TOPIC = "windows-words";
 
     public static void createTopics(Properties config, List<String> topics) {
         AdminClient admin = AdminClient.create(config);
