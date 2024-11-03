@@ -17,10 +17,10 @@
 
     <properties>
         <order.service.avro.version>1.0.0</order.service.avro.version>
-        <avro.version>1.11.2</avro.version>
-        <kafka-avro-serializer.version>7.4.0</kafka-avro-serializer.version>
-        <logback.version>1.4.8</logback.version>
-        <slf4j-api.version>2.0.7</slf4j-api.version>
+        <avro.version>1.12.0</avro.version>
+        <kafka-avro-serializer.version>7.7.1</kafka-avro-serializer.version>
+        <logback.version>1.5.12</logback.version>
+        <slf4j-api.version>2.1.0-alpha1</slf4j-api.version>
     </properties>
 
     <dependencyManagement>
