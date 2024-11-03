@@ -1,0 +1,12 @@
+services:
+  kafka:
+    image: ssamantr/kafka-broker:latest
+    container_name: kafka-broker
+    hostname: kafka
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_CLUSTER_ID: OTMwNzFhYTY1ODNiNGE5OT
+    volumes:
+      - ./props/server.properties:/kafka/config/kraft/server.properties
+      - ./data:/tmp/kafka-logs
