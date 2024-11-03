@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/v1/coffee_orders")
+@RequestMapping("/v1/order-coffee")
 public class CoffeeOrderController {
 
     private final CoffeeOrderService coffeeOrderService;

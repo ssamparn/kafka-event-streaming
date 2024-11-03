@@ -1,0 +1,42 @@
+{
+  "namespace": "com.spring.event.streaming.generated",
+  "type": "record",
+  "name": "DeliveryAddress",
+  "fields": [
+    {
+      "name": "AddressLine",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    {
+      "name": "City",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    {
+      "name": "State",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    {
+      "name": "PinCode",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    {
+      "name": "ContactNumber",
+      "type": [
+        "null",
+        "string"
+      ]
+    }
+  ]
+}

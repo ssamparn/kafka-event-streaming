@@ -21,32 +21,30 @@ import java.util.concurrent.ExecutionException;
 public class GreetingProducer {
 
     private static final Logger log = LoggerFactory.getLogger(GreetingProducer.class);
-    private static final String GREETING_TOPIC = "greeting";
+    private static final String GREETING_TOPIC = "greetings";
 
     public static void main(String[] args) throws IOException, ExecutionException, InterruptedException {
 
-        Properties producerProps = new Properties();
-        producerProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-        producerProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
-        producerProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, ByteArraySerializer.class.getName());
+        Properties producerProperties = new Properties();
+        producerProperties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:8082");
+        producerProperties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+        producerProperties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, ByteArraySerializer.class.getName());
 
-        KafkaProducer<String, byte[]> producer = new KafkaProducer<>(producerProps);
+        KafkaProducer<String, byte[]> producer = new KafkaProducer<>(producerProperties);
 
         Greeting greeting = buildGreeting("Hello, Schema Registry!");
         byte[] message = greeting.toByteBuffer().array();
 
-        ProducerRecord<String, byte[]> producerRecord =
-                new ProducerRecord<>(GREETING_TOPIC, message);
+        ProducerRecord<String, byte[]> producerRecord = new ProducerRecord<>(GREETING_TOPIC, message);
 
         RecordMetadata recordMetadata = producer.send(producerRecord).get();
-        log.info("recordMetaData : " + recordMetadata.toString());
+        log.info("Record Meta Data : " + recordMetadata.toString());
     }
 
     private static Greeting buildGreeting(String message) {
         return Greeting.newBuilder()
                 .setId(UUID.randomUUID())
                 .setGreeting(message)
-                //.setCreatedDateTimeLocal(LocalDateTime.now()) // LocalDateTime
                 .setCreatedDateTime(Instant.now()) // UTC dateTime
                 .setCreatedDate(LocalDate.now()) // LocalDate
                 .setCost(BigDecimal.valueOf(3.999)) // 123.45 has a precision of 5 and a scale of 2.

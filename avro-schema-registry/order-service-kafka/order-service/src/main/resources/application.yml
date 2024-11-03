@@ -1,5 +1,5 @@
 server:
-  port: 8082
+  port: 7070
 spring:
   profiles:
     active: local
@@ -12,7 +12,7 @@ spring:
     template:
       default-topic: coffee-orders
     producer:
-      bootstrap-servers: localhost:9092
+      bootstrap-servers: localhost:8082
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
     properties:

@@ -1,5 +1,5 @@
 server:
-  port: 8083
+  port: 7071
 spring:
   application:
     name: 'coffee-orders-consumer'
@@ -12,7 +12,7 @@ spring:
       on-profile: local
   kafka:
     consumer:
-      bootstrap-servers: localhost:9092
+      bootstrap-servers: localhost:8082
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
       group-id: coffee-orders-listener-group

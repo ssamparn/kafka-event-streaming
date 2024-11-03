@@ -1,0 +1,702 @@
+[
+    {
+        "addressLine": "HN. 535, 4472 Eu St.",
+        "city": "Katihar",
+        "state": "Bihar",
+        "pinCode": "867820",
+        "contactNumber": ""
+    },
+    {
+        "addressLine": "7418 Dolor St.",
+        "city": "Nagpur",
+        "state": "Maharastra",
+        "pinCode": "710782",
+        "contactNumber": ""
+    },
+    {
+        "addressLine": "HN. 821, 8267 Dapibus Av.",
+        "city": "Kolkata",
+        "state": "West Bengal",
+        "pinCode": "701624",
+        "contactNumber": ""
+    },
+    {
+        "addressLine": "773 Eu Ave",
+        "city": "Sitapur",
+        "state": "Uttar Pradesh",
+        "pinCode": "431667",
+        "contactNumber": "9934440762"
+    },
+    {
+        "addressLine": "7409 Laoreet Rd.",
+        "city": "Jammu",
+        "state": "Jammu and Kashmir",
+        "pinCode": "697806",
+        "contactNumber": "8335722151"
+    },
+    {
+        "addressLine": "7114 Eu, Rd.",
+        "city": "Ratlam",
+        "state": "Madhya Pradesh",
+        "pinCode": "925281",
+        "contactNumber": "4057182350"
+    },
+    {
+        "addressLine": "Flat No. #658-8929 Arcu Rd.",
+        "city": "Guna",
+        "state": "Madhya Pradesh",
+        "pinCode": "555836",
+        "contactNumber": "5015943575"
+    },
+    {
+        "addressLine": "291-4367 Aliquam St.",
+        "city": "Pali",
+        "state": "Rajasthan",
+        "pinCode": "906511",
+        "contactNumber": "7544884134"
+    },
+    {
+        "addressLine": "Flat No. #396-1703 Ullamcorper, Street",
+        "city": "Hassan",
+        "state": "Karnataka",
+        "pinCode": "701126",
+        "contactNumber": "1157976639"
+    },
+    {
+        "addressLine": "House No 847, 2219 Donec St.",
+        "city": "Adoni",
+        "state": "Andhra Pradesh",
+        "pinCode": "187597",
+        "contactNumber": "4515437963"
+    },
+    {
+        "addressLine": "Flat No. #325-2029 Ac, Ave",
+        "city": "Agra",
+        "state": "Uttar Pradesh",
+        "pinCode": "556412",
+        "contactNumber": "2844494619"
+    },
+    {
+        "addressLine": "249-7358 Nec St.",
+        "city": "Jaipur",
+        "state": "Rajasthan",
+        "pinCode": "326647",
+        "contactNumber": "4455040114"
+    },
+    {
+        "addressLine": "6549 Ac, Ave",
+        "city": "Ramagundam",
+        "state": "Andhra Pradesh",
+        "pinCode": "699979",
+        "contactNumber": "2758430969"
+    },
+    {
+        "addressLine": "House No 727, 9696 Ullamcorper, Road",
+        "city": "Dabgram",
+        "state": "West Bengal",
+        "pinCode": "953658",
+        "contactNumber": "4166559042"
+    },
+    {
+        "addressLine": "House No 703, 9601 Aliquam Av.",
+        "city": "Arrah",
+        "state": "Bihar",
+        "pinCode": "732227",
+        "contactNumber": "6382741027"
+    },
+    {
+        "addressLine": "Flat No. #229-5133 Quam. Road",
+        "city": "Haridwar",
+        "state": "Uttarakhand",
+        "pinCode": "478334",
+        "contactNumber": "8593433887"
+    },
+    {
+        "addressLine": "611-1753 Etiam Avenue",
+        "city": "Nagaon",
+        "state": "Assam",
+        "pinCode": "935500",
+        "contactNumber": "3398236143"
+    },
+    {
+        "addressLine": "3122 Morbi Ave",
+        "city": "Palakkad",
+        "state": "Kerala",
+        "pinCode": "800459",
+        "contactNumber": "8235927974"
+    },
+    {
+        "addressLine": "5930 Aliquam Street",
+        "city": "Chhindwara",
+        "state": "Madhya Pradesh",
+        "pinCode": "724661",
+        "contactNumber": "2141075027"
+    },
+    {
+        "addressLine": "House No 416, 8652 Sodales Rd.",
+        "city": "Mathura",
+        "state": "Uttar Pradesh",
+        "pinCode": "148055",
+        "contactNumber": "8645000577"
+    },
+    {
+        "addressLine": "8612 Non Rd.",
+        "city": "Guna",
+        "state": "Madhya Pradesh",
+        "pinCode": "210683",
+        "contactNumber": "8336980338"
+    },
+    {
+        "addressLine": "295-7690 At Street",
+        "city": "Shahjahanpur",
+        "state": "Uttar Pradesh",
+        "pinCode": "228410",
+        "contactNumber": "4624129756"
+    },
+    {
+        "addressLine": "House No 638, 4720 Nisi Road",
+        "city": "Madurai",
+        "state": "Tamil Nadu",
+        "pinCode": "754286",
+        "contactNumber": "5741337087"
+    },
+    {
+        "addressLine": "706-3622 Pharetra Av.",
+        "city": "Serampore",
+        "state": "West Bengal",
+        "pinCode": "266237",
+        "contactNumber": "8034395531"
+    },
+    {
+        "addressLine": "6363 Non Rd.",
+        "city": "Darbhanga",
+        "state": "Bihar",
+        "pinCode": "570288",
+        "contactNumber": "5656699770"
+    },
+    {
+        "addressLine": "853-9772 Enim, Avenue",
+        "city": "Allappuzha",
+        "state": "Kerala",
+        "pinCode": "140312",
+        "contactNumber": "5528409181"
+    },
+    {
+        "addressLine": "Flat No. #773-5039 Lacinia Road",
+        "city": "Gudivada",
+        "state": "Andhra Pradesh",
+        "pinCode": "553874",
+        "contactNumber": "6772227684"
+    },
+    {
+        "addressLine": "Flat No. #753-706 Molestie Av.",
+        "city": "North Barrackpur",
+        "state": "West Bengal",
+        "pinCode": "925233",
+        "contactNumber": "8615470547"
+    },
+    {
+        "addressLine": "Flat No. #794-4263 Tempor St.",
+        "city": "Shivapuri",
+        "state": "Madhya Pradesh",
+        "pinCode": "563047",
+        "contactNumber": "6403786002"
+    },
+    {
+        "addressLine": "House No 786, 3820 Luctus Av.",
+        "city": "Ambala Sadar",
+        "state": "Haryana",
+        "pinCode": "536057",
+        "contactNumber": "7336393163"
+    },
+    {
+        "addressLine": "1852 Est St.",
+        "city": "Imphal",
+        "state": "Manipur",
+        "pinCode": "120023",
+        "contactNumber": "6124913142"
+    },
+    {
+        "addressLine": "7697 Sed, Road",
+        "city": "Tiruvottiyur",
+        "state": "Tamil Nadu",
+        "pinCode": "819925",
+        "contactNumber": "6282658715"
+    },
+    {
+        "addressLine": "House No 735, 8148 Eu St.",
+        "city": "Bahraich",
+        "state": "Uttar Pradesh",
+        "pinCode": "977360",
+        "contactNumber": "5692615243"
+    },
+    {
+        "addressLine": "9728 Ac Ave",
+        "city": "Gonda",
+        "state": "Uttar Pradesh",
+        "pinCode": "468305",
+        "contactNumber": "8482561251"
+    },
+    {
+        "addressLine": "Flat No. #570-3269 Adipiscing, Rd.",
+        "city": "Chapra",
+        "state": "Bihar",
+        "pinCode": "257573",
+        "contactNumber": "1799428172"
+    },
+    {
+        "addressLine": "Flat No. #420-9203 Pretium Street",
+        "city": "Dehri",
+        "state": "Bihar",
+        "pinCode": "392400",
+        "contactNumber": "3841876454"
+    },
+    {
+        "addressLine": "Flat No. #335-7984 Senectus Rd.",
+        "city": "Pali",
+        "state": "Rajasthan",
+        "pinCode": "900530",
+        "contactNumber": "6125618251"
+    },
+    {
+        "addressLine": "393-5141 Enim. Ave",
+        "city": "Surendranagar",
+        "state": "Gujarat",
+        "pinCode": "209008",
+        "contactNumber": "8862122529"
+    },
+    {
+        "addressLine": "2465 Laoreet, Street",
+        "city": "Dehri",
+        "state": "Bihar",
+        "pinCode": "637308",
+        "contactNumber": "2662305605"
+    },
+    {
+        "addressLine": "467-7967 Volutpat Ave",
+        "city": "Jodhpur",
+        "state": "Rajasthan",
+        "pinCode": "983371",
+        "contactNumber": "6577421741"
+    },
+    {
+        "addressLine": "644-1102 Quam, Road",
+        "city": "Muzaffarnagar",
+        "state": "Uttar Pradesh",
+        "pinCode": "513402",
+        "contactNumber": "7979432420"
+    },
+    {
+        "addressLine": "House No 712, 4763 Turpis Street",
+        "city": "Pune",
+        "state": "Maharastra",
+        "pinCode": "551272",
+        "contactNumber": "3419930245"
+    },
+    {
+        "addressLine": "582-5177 Suscipit Rd.",
+        "city": "Patna",
+        "state": "Bihar",
+        "pinCode": "530094",
+        "contactNumber": "1158759250"
+    },
+    {
+        "addressLine": "House No 424, 5509 Ut Street",
+        "city": "Ganganagar",
+        "state": "Rajasthan",
+        "pinCode": "692405",
+        "contactNumber": "8395635840"
+    },
+    {
+        "addressLine": "House No 953, 785 Viverra. Street",
+        "city": "Hathras",
+        "state": "Uttar Pradesh",
+        "pinCode": "973613",
+        "contactNumber": "3242686167"
+    },
+    {
+        "addressLine": "265-1062 Sapien. Road",
+        "city": "Murwara",
+        "state": "Madhya Pradesh",
+        "pinCode": "894885",
+        "contactNumber": "2503052325"
+    },
+    {
+        "addressLine": "Flat No. #338-5510 Justo. Av.",
+        "city": "Puri",
+        "state": "Odisha",
+        "pinCode": "127980",
+        "contactNumber": "9686763415"
+    },
+    {
+        "addressLine": "House No 992, 8003 In Rd.",
+        "city": "Dehradun",
+        "state": "Uttarakhand",
+        "pinCode": "425528",
+        "contactNumber": "9875104847"
+    },
+    {
+        "addressLine": "1407 Auctor, St.",
+        "city": "Ichalkaranji",
+        "state": "Maharastra",
+        "pinCode": "115863",
+        "contactNumber": "2598303301"
+    },
+    {
+        "addressLine": "715-449 Arcu. Rd.",
+        "city": "Delhi",
+        "state": "Delhi",
+        "pinCode": "338019",
+        "contactNumber": "5994731583"
+    },
+    {
+        "addressLine": "House No 556, 2384 Libero. Rd.",
+        "city": "Banda",
+        "state": "Uttar Pradesh",
+        "pinCode": "767511",
+        "contactNumber": "9801318492"
+    },
+    {
+        "addressLine": "Flat No. #740-6953 Scelerisque Rd.",
+        "city": "Mango",
+        "state": "Jharkhand",
+        "pinCode": "697196",
+        "contactNumber": "7172289826"
+    },
+    {
+        "addressLine": "Flat No. #210-902 Neque Street",
+        "city": "South Dum Dum",
+        "state": "West Bengal",
+        "pinCode": "504795",
+        "contactNumber": "7508353683"
+    },
+    {
+        "addressLine": "Flat No. #741-3157 Metus Av.",
+        "city": "Delhi",
+        "state": "Delhi",
+        "pinCode": "495095",
+        "contactNumber": "7097939373"
+    },
+    {
+        "addressLine": "7711 Ac Avenue",
+        "city": "Raigarh",
+        "state": "Chhattisgarh",
+        "pinCode": "282126",
+        "contactNumber": "1952031107"
+    },
+    {
+        "addressLine": "846-8342 Sollicitudin Road",
+        "city": "Allappuzha",
+        "state": "Kerala",
+        "pinCode": "510771",
+        "contactNumber": "6773875946"
+    },
+    {
+        "addressLine": "Flat No. #863-3118 Odio Rd.",
+        "city": "Mathura",
+        "state": "Uttar Pradesh",
+        "pinCode": "587393",
+        "contactNumber": "8562646144"
+    },
+    {
+        "addressLine": "800-9178 Aliquam Street",
+        "city": "Karnal",
+        "state": "Haryana",
+        "pinCode": "132797",
+        "contactNumber": "6883499359"
+    },
+    {
+        "addressLine": "Flat No. #131-5960 Varius St.",
+        "city": "Ongole",
+        "state": "Andhra Pradesh",
+        "pinCode": "881860",
+        "contactNumber": "6735030289"
+    },
+    {
+        "addressLine": "3508 Ligula. Rd.",
+        "city": "Ahmadnagar",
+        "state": "Maharastra",
+        "pinCode": "703396",
+        "contactNumber": "9638404068"
+    },
+    {
+        "addressLine": "Flat No. #316-5621 Laoreet St.",
+        "city": "Nellore",
+        "state": "Andhra Pradesh",
+        "pinCode": "333433",
+        "contactNumber": "5232382321"
+    },
+    {
+        "addressLine": "House No 383, 4427 Pellentesque Rd.",
+        "city": "Bokaro Steel city",
+        "state": "Jharkhand",
+        "pinCode": "509723",
+        "contactNumber": "1442202063"
+    },
+    {
+        "addressLine": "6226 Mauris St.",
+        "city": "Ingraj Bazar",
+        "state": "West Bengal",
+        "pinCode": "592487",
+        "contactNumber": "8382307048"
+    },
+    {
+        "addressLine": "855-4409 Duis Street",
+        "city": "Junagadh",
+        "state": "Gujarat",
+        "pinCode": "622745",
+        "contactNumber": "6984835508"
+    },
+    {
+        "addressLine": "735-1235 Pretium Street",
+        "city": "Unnao",
+        "state": "Uttar Pradesh",
+        "pinCode": "103540",
+        "contactNumber": "4331966638"
+    },
+    {
+        "addressLine": "7319 Nunc Ave",
+        "city": "Muzaffarpur",
+        "state": "Bihar",
+        "pinCode": "760765",
+        "contactNumber": "7586450222"
+    },
+    {
+        "addressLine": "House No 989, 5810 Nulla Av.",
+        "city": "Ashoknagar-Kalyangarh",
+        "state": "West Bengal",
+        "pinCode": "561119",
+        "contactNumber": "9838697111"
+    },
+    {
+        "addressLine": "233-9672 Pharetra. Rd.",
+        "city": "Kanpur Cantonment",
+        "state": "Uttar Pradesh",
+        "pinCode": "832089",
+        "contactNumber": "8675203394"
+    },
+    {
+        "addressLine": "529-4520 Libero. Ave",
+        "city": "Raigarh",
+        "state": "Chhattisgarh",
+        "pinCode": "183678",
+        "contactNumber": "3057906681"
+    },
+    {
+        "addressLine": "House No 936, 3362 Vehicula Ave",
+        "city": "Serampore",
+        "state": "West Bengal",
+        "pinCode": "367103",
+        "contactNumber": "2614588263"
+    },
+    {
+        "addressLine": "House No 695, 9930 A, St.",
+        "city": "Hassan",
+        "state": "Karnataka",
+        "pinCode": "277874",
+        "contactNumber": "4013626333"
+    },
+    {
+        "addressLine": "Flat No. #735-431 Gravida. St.",
+        "city": "Chapra",
+        "state": "Bihar",
+        "pinCode": "386153",
+        "contactNumber": "2004897617"
+    },
+    {
+        "addressLine": "488-2166 Class St.",
+        "city": "Bellary",
+        "state": "Karnataka",
+        "pinCode": "831105",
+        "contactNumber": "4355640111"
+    },
+    {
+        "addressLine": "Flat No. #736-9947 Et Av.",
+        "city": "Sambalpur",
+        "state": "Odisha",
+        "pinCode": "979906",
+        "contactNumber": "9196326946"
+    },
+    {
+        "addressLine": "444-1842 Dui. Rd.",
+        "city": "Shivapuri",
+        "state": "Madhya Pradesh",
+        "pinCode": "561012",
+        "contactNumber": "7243866404"
+    },
+    {
+        "addressLine": "2923 Sollicitudin Road",
+        "city": "Secunderabad",
+        "state": "Andhra Pradesh",
+        "pinCode": "382673",
+        "contactNumber": "3685997991"
+    },
+    {
+        "addressLine": "517-8912 Nulla St.",
+        "city": "Champdani",
+        "state": "West Bengal",
+        "pinCode": "680616",
+        "contactNumber": "8183195143"
+    },
+    {
+        "addressLine": "5418 Magna. Rd.",
+        "city": "Chennai",
+        "state": "Tamil Nadu",
+        "pinCode": "386032",
+        "contactNumber": "6557358508"
+    },
+    {
+        "addressLine": "548-8023 Vulputate, Rd.",
+        "city": "Gonda",
+        "state": "Uttar Pradesh",
+        "pinCode": "945821",
+        "contactNumber": "2509549312"
+    },
+    {
+        "addressLine": "House No 235, 5674 Vitae Street",
+        "city": "Chapra",
+        "state": "Bihar",
+        "pinCode": "201938",
+        "contactNumber": "4051146489"
+    },
+    {
+        "addressLine": "House No 740, 6689 Tempor Av.",
+        "city": "Bharatpur",
+        "state": "Rajasthan",
+        "pinCode": "932264",
+        "contactNumber": "8563079826"
+    },
+    {
+        "addressLine": "House No 534, 9974 Rutrum Av.",
+        "city": "Bellary",
+        "state": "Karnataka",
+        "pinCode": "761574",
+        "contactNumber": "7652091989"
+    },
+    {
+        "addressLine": "Flat No. #378-6117 Nulla Rd.",
+        "city": "Mandasor",
+        "state": "Madhya Pradesh",
+        "pinCode": "975340",
+        "contactNumber": "9006343802"
+    },
+    {
+        "addressLine": "7947 Mauris, Av.",
+        "city": "Tambaram",
+        "state": "Tamil Nadu",
+        "pinCode": "339533",
+        "contactNumber": "5898142373"
+    },
+    {
+        "addressLine": "Flat No. #296-6151 Neque Road",
+        "city": "Varanasi",
+        "state": "Uttar Pradesh",
+        "pinCode": "340397",
+        "contactNumber": "9083194560"
+    },
+    {
+        "addressLine": "Flat No. #879-8630 Sed Road",
+        "city": "Vijayawada",
+        "state": "Andhra Pradesh",
+        "pinCode": "824631",
+        "contactNumber": "2805327045"
+    },
+    {
+        "addressLine": "Flat No. #398-2797 A Rd.",
+        "city": "Sikar",
+        "state": "Rajasthan",
+        "pinCode": "660265",
+        "contactNumber": "1131794401"
+    },
+    {
+        "addressLine": "House No 471, 2701 Purus, Rd.",
+        "city": "Faridabad",
+        "state": "Haryana",
+        "pinCode": "121303",
+        "contactNumber": "4452007276"
+    },
+    {
+        "addressLine": "House No 639, 1344 Nisl St.",
+        "city": "Farrukhabad-cum-Fatehgarh",
+        "state": "Uttar Pradesh",
+        "pinCode": "481405",
+        "contactNumber": "5281218896"
+    },
+    {
+        "addressLine": "House No 400, 2541 Lacus Street",
+        "city": "Alandur",
+        "state": "Tamil Nadu",
+        "pinCode": "919471",
+        "contactNumber": "3677519188"
+    },
+    {
+        "addressLine": "627-5294 Nisi St.",
+        "city": "Hyderabad",
+        "state": "Andhra Pradesh",
+        "pinCode": "827202",
+        "contactNumber": "7553553297"
+    },
+    {
+        "addressLine": "691-6564 Lacinia Rd.",
+        "city": "Arrah",
+        "state": "Bihar",
+        "pinCode": "380536",
+        "contactNumber": "1115912385"
+    },
+    {
+        "addressLine": "House No 240, 7563 Vel Rd.",
+        "city": "Rishra",
+        "state": "West Bengal",
+        "pinCode": "201130",
+        "contactNumber": "2828547194"
+    },
+    {
+        "addressLine": "Flat No. #245-5336 Nibh. Av.",
+        "city": "Jammu",
+        "state": "Jammu and Kashmir",
+        "pinCode": "114809",
+        "contactNumber": "9836944618"
+    },
+    {
+        "addressLine": "3474 Nam Rd.",
+        "city": "Mangalore",
+        "state": "Karnataka",
+        "pinCode": "164228",
+        "contactNumber": "6528245422"
+    },
+    {
+        "addressLine": "Flat No. #527-9373 At Rd.",
+        "city": "South Dum Dum",
+        "state": "West Bengal",
+        "pinCode": "138781",
+        "contactNumber": "2356382980"
+    },
+    {
+        "addressLine": "Flat No. #630-2414 Enim. St.",
+        "city": "Satna",
+        "state": "Madhya Pradesh",
+        "pinCode": "991102",
+        "contactNumber": "8931080189"
+    },
+    {
+        "addressLine": "567-3331 In St.",
+        "city": "Cuddalore",
+        "state": "Tamil Nadu",
+        "pinCode": "813558",
+        "contactNumber": "3549212065"
+    },
+    {
+        "addressLine": "9606 Integer Ave",
+        "city": "Multan",
+        "state": "Punjab",
+        "pinCode": "491357",
+        "contactNumber": "7979421441"
+    },
+    {
+        "addressLine": "Flat No. #174-7165 Magna, Street",
+        "city": "Eluru",
+        "state": "Andhra Pradesh",
+        "pinCode": "356811",
+        "contactNumber": "4117163673"
+    }
+]

@@ -21,13 +21,13 @@ public class CoffeeOrderProducerSchemaRegistry {
     private static final Logger log = LoggerFactory.getLogger(CoffeeOrderProducerSchemaRegistry.class);
 
     public static void main(String[] args) throws InterruptedException, ExecutionException {
-        Properties producerProps = new Properties();
-        producerProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-        producerProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
-        producerProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class.getName());
-        producerProps.put(KafkaAvroSerializerConfig.SCHEMA_REGISTRY_URL_CONFIG, "http://localhost:8081");
+        Properties producerProperties = new Properties();
+        producerProperties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:8082");
+        producerProperties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+        producerProperties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class.getName());
+        producerProperties.put(KafkaAvroSerializerConfig.SCHEMA_REGISTRY_URL_CONFIG, "http://localhost:8081");
 
-        KafkaProducer<String, CoffeeOrder> producer = new KafkaProducer<>(producerProps);
+        KafkaProducer<String, CoffeeOrder> producer = new KafkaProducer<>(producerProperties);
 
         CoffeeOrder coffeeOrder = buildNewCoffeeOrder();
         System.out.println("Coffee Order Sent " + coffeeOrder);

@@ -22,16 +22,16 @@ import java.util.Properties;
 public class GreetingConsumer {
 
     private static final Logger log = LoggerFactory.getLogger(GreetingConsumer.class);
-    private static final String GREETING_TOPIC = "greeting";
+    private static final String GREETING_TOPIC = "greetings";
 
     public static void main(String[] args) {
-        Properties consumerProps = new Properties();
-        consumerProps.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-        consumerProps.put(ConsumerConfig.GROUP_ID_CONFIG, "greeting.consumer");
-        consumerProps.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
-        consumerProps.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ByteArrayDeserializer.class.getName());
+        Properties consumerProperties = new Properties();
+        consumerProperties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:8082");
+        consumerProperties.put(ConsumerConfig.GROUP_ID_CONFIG, "greeting.consumer");
+        consumerProperties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
+        consumerProperties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ByteArrayDeserializer.class.getName());
 
-        KafkaConsumer<String, byte[]> consumer = new KafkaConsumer<>(consumerProps);
+        KafkaConsumer<String, byte[]> consumer = new KafkaConsumer<>(consumerProperties);
 
         consumer.subscribe(Collections.singletonList(GREETING_TOPIC));
         log.info("Consumer Started");

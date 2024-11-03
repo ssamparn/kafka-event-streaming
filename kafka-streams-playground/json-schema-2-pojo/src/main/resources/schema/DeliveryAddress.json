@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "javaType": "com.spring.event.streaming.generated.DeliveryAddress",
+  "properties": {
+    "AddressLine": {
+      "type": "string"
+    },
+    "City": {
+      "type": "string"
+    },
+    "State": {
+      "type": "string"
+    },
+    "PinCode": {
+      "type": "string"
+    },
+    "ContactNumber": {
+      "type": "string"
+    }
+  }
+}
