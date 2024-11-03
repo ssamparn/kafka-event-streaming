@@ -16,14 +16,14 @@
     <packaging>pom</packaging>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <kafka-streams.version>3.5.1</kafka-streams.version>
-        <jackson.version>2.15.2</jackson.version>
-        <lombok.version>1.18.28</lombok.version>
-        <slf4j-api.version>2.0.7</slf4j-api.version>
-        <logback-classic.version>1.4.8</logback-classic.version>
+        <kafka-streams.version>3.8.1</kafka-streams.version>
+        <jackson.version>2.18.1</jackson.version>
+        <lombok.version>1.18.34</lombok.version>
+        <slf4j-api.version>2.1.0-alpha1</slf4j-api.version>
+        <logback-classic.version>1.5.12</logback-classic.version>
     </properties>
 
     <dependencyManagement>

@@ -9,16 +9,112 @@
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
-    <name>Kafka Event Streaming - Parent POM</name>
+    <name>Kafka Event Streaming - Parent Root POM</name>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <project.version>1.0.0</project.version>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <kafka-streams.version>3.8.0</kafka-streams.version>
+        <kafka-clients.version>3.8.0</kafka-clients.version>
+        <lombok.version>1.18.34</lombok.version>
+        <logback.version>1.5.11</logback.version>
+        <slf4j-api.version>2.1.0-alpha1</slf4j-api.version>
+        <jackson-databind.version>2.18.0</jackson-databind.version>
+        <jackson-datatype.version>2.18.1</jackson-datatype.version>
+        <commons-lang.version>3.17.0</commons-lang.version>
+        <avro.version>1.12.0</avro.version>
+        <kafka-avro-serializer.version>7.7.1</kafka-avro-serializer.version>
+        <kafka-streams-avro-serde.version>7.7.1</kafka-streams-avro-serde.version>
     </properties>
 
     <modules>
         <module>avro-schema-registry</module>
         <module>kafka-streams-api</module>
         <module>kafka-streams-api-spring-boot</module>
+        <module>kafka-streams-playground</module>
+        <module>kafka-streams-playground/pos-fanout-avro</module>
+        <module>kafka-streams-playground/rewards-in-memory-state</module>
+        <module>kafka-streams-playground/streaming-table</module>
     </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>kafka-streams</artifactId>
+                <version>${kafka-streams.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>kafka-clients</artifactId>
+                <version>${kafka-clients.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson-databind.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.datatype</groupId>
+                <artifactId>jackson-datatype-jsr310</artifactId>
+                <version>${jackson-datatype.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.avro</groupId>
+                <artifactId>avro</artifactId>
+                <version>${avro.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.confluent</groupId>
+                <artifactId>kafka-avro-serializer</artifactId>
+                <version>${kafka-avro-serializer.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.confluent</groupId>
+                <artifactId>kafka-streams-avro-serde</artifactId>
+                <version>${kafka-streams-avro-serde.version}</version>
+            </dependency>
+            <!--LOCAL-->
+            <dependency>
+                <groupId>com.spring.event.streaming</groupId>
+                <artifactId>hello-producer</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <repositories>
+        <repository>
+            <id>confluent</id>
+            <name>Confluent</name>
+            <url>https://packages.confluent.io/maven/</url>
+        </repository>
+    </repositories>
 </project>
