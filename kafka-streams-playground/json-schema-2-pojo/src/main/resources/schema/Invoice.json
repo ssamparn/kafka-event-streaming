@@ -1,0 +1,44 @@
+{
+  "type": "object",
+  "javaType": "com.spring.event.streaming.generated.Invoice",
+  "properties": {
+    "InvoiceNumber": {
+      "type": "string"
+    },
+    "CreatedTime": {
+      "type": "string",
+      "format": "utc-millisec"
+    },
+    "CustomerCardNo": {
+      "type": "string"
+    },
+    "TotalAmount": {
+      "type": "number"
+    },
+    "NumberOfItem": {
+      "type": "integer"
+    },
+    "PaymentMethod": {
+      "type": "string"
+    },
+    "TaxableAmount": {
+      "type": "number"
+    },
+    "CGST": {
+      "type": "number"
+    },
+    "SGCT": {
+      "type": "number"
+    },
+    "CESS": {
+      "type": "number"
+    },
+    "InvoiceLineItems": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "$ref": "LineItem.json"
+      }
+    }
+  }
+}
