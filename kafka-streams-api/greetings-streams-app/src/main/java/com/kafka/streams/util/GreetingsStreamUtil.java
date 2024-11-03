@@ -55,7 +55,7 @@ public class GreetingsStreamUtil {
         return propsMap;
     }
 
-    public static RecordMetadata publishMessageSync(String topicName, String key, String message ){
+    public static RecordMetadata publishMessageSync(String topicName, String key, String message) {
 
         ProducerRecord<String,String> producerRecord = new ProducerRecord<>(topicName, key, message);
         RecordMetadata recordMetadata = null;
