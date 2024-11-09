@@ -24,8 +24,11 @@
         <module>hello-streams</module>
         <module>pos-validator</module>
         <module>pos-fanout</module>
+        <module>pos-fanout-avro</module>
         <module>json-schema-2-pojo</module>
         <module>avro-schema-2-pojo</module>
         <module>pos-simulator-avro</module>
+        <module>rewards-in-memory-state</module>
+        <module>streaming-table</module>
     </modules>
 </project>

@@ -33,9 +33,6 @@
         <module>kafka-streams-api</module>
         <module>kafka-streams-api-spring-boot</module>
         <module>kafka-streams-playground</module>
-        <module>kafka-streams-playground/pos-fanout-avro</module>
-        <module>kafka-streams-playground/rewards-in-memory-state</module>
-        <module>kafka-streams-playground/streaming-table</module>
     </modules>
 
     <dependencyManagement>
