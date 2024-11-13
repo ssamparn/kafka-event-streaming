@@ -1,0 +1,18 @@
+{
+  "type": "object",
+  "javaType": "com.spring.event.streaming.generated.Employee",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "department": {
+      "type": "string"
+    },
+    "salary": {
+      "type": "integer"
+    }
+  }
+}

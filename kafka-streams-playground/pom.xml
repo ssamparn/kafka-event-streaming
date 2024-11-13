@@ -30,5 +30,9 @@
         <module>pos-simulator-avro</module>
         <module>rewards-in-memory-state</module>
         <module>streaming-table</module>
+        <module>word-count</module>
+        <module>rewards-table</module>
+        <module>kstream-aggregate</module>
+        <module>age-count</module>
     </modules>
 </project>

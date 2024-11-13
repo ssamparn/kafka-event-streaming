@@ -20,8 +20,8 @@ import java.util.Properties;
 
 /* *
  * We know Kafka Streams DSL and building topologies.
- * However, until now, we have been working with each event in isolation. We picked up one invoice at a time, and either computed some values such as loyalty points on the invoice itself
- * or transformed it into some other event such as a Hadoop Record. In this scenario, each event is handled independently without referring to other concurrent events or earlier events.
+ * However, until now, we have been working with each event in isolation. We picked up one invoice at a time, and either computed some values such as loyalty points on the invoice itself or transformed it into some other event such as a Hadoop Record.
+ * In this scenario, each event is handled independently without referring to other concurrent events or earlier events.
  * Working with individual events in isolation is a common requirement. However, most of the stream processing requirements would need you to remember some information or context from past events.
  *
  * That's where states and the state stores comes into picture, which are used by stream processing application to remember some information from the past.
@@ -37,7 +37,7 @@ import java.util.Properties;
  * The mapValues() processor would also calculate the rewards for the current invoice and include it to the notification message. However, we want to add the current rewards to the previous points. We can do that by implementing a separate processor node.
  * This new node will query a table for the earlier total and add the current value with the previous value, right? Then update the total in the notification message. We should also update the new total points to the lookup table for the next use.
  * Finally, we sink the notification in a different topic for the SMS service. The solution looks straightforward. However, in this solution, the lookup table is the most critical component.
- * The table maintains the current State of customer rewards. In a real-time streaming application, such tables are termed as State.
+ * The table maintains the current state of customer rewards. In a real-time streaming application, such tables are termed as State.
  *
  * States are fundamental to an application. Almost every application maintains some state, and that would often be necessary and fundamental to building stream processing solution.
  * A processor state could be as simple as a single key-value pair, or it could be a large lookup table or maybe a bunch of tables. It all depends on the complexity and requirement.
@@ -93,10 +93,10 @@ public class RewardsApp {
     private final static String REWARDS_STORE = "CustomerRewardsStore";
 
     public static void main(String[] args) {
-        Properties stremProperties = new Properties();
-        stremProperties.put(StreamsConfig.APPLICATION_ID_CONFIG, applicationID);
-        stremProperties.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
-        stremProperties.put(StreamsConfig.NUM_STREAM_THREADS_CONFIG, 3);
+        Properties streamProperties = new Properties();
+        streamProperties.put(StreamsConfig.APPLICATION_ID_CONFIG, applicationID);
+        streamProperties.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
+        streamProperties.put(StreamsConfig.NUM_STREAM_THREADS_CONFIG, 3);
 
         StreamsBuilder streamsBuilder = new StreamsBuilder();
 
@@ -113,8 +113,8 @@ public class RewardsApp {
          * through():
          * Repartitioning a Kafka Stream is a common requirement for a complex stream processing application, and it can be easily accomplished by using the KStream.through() processor.
          * The through() processor writes the current stream to a given (temporary) topic, and you can supply a custom partitioning method to the through() processor which will be used to repartition the data.
-         * The through() method again reads the intermediate topic and returns a new KStream. So, you don’t have to write and again read. Both the steps are taken care of by the through() method.
-         * The through() is specifically designed to achieve seamless repartitioning of your KStream.
+         * The through() method again reads the intermediate topic and returns a new KStream. So, you don’t have to write and read again. Both the steps are taken care of by the through() method.
+         * The through() is specifically designed to achieve seamless repartitioning of your KStream or KTable.
          *
          * However, through() is deprecated and repartition() is suggested
          * */
@@ -125,7 +125,7 @@ public class RewardsApp {
                 .to(notificationTopic, Produced.with(AppSerdes.String(), AppSerdes.Notification()));
 
         log.info("Starting Streams");
-        KafkaStreams stream = new KafkaStreams(streamsBuilder.build(), stremProperties);
+        KafkaStreams stream = new KafkaStreams(streamsBuilder.build(), streamProperties);
         stream.start();
 
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {

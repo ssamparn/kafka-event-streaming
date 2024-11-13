@@ -1,0 +1,15 @@
+{
+  "type": "object",
+  "javaType": "com.spring.event.streaming.generated.DepartmentAggregate",
+  "properties": {
+    "totalSalary": {
+      "type": "integer"
+    },
+    "employeeCount": {
+      "type": "integer"
+    },
+    "avgSalary": {
+      "type": "number"
+    }
+  }
+}

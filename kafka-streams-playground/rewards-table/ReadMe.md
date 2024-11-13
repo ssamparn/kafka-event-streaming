@@ -1,5 +1,5 @@
 ## Introduction
-Module used to demo Kafka InMemory State Store
+Module used to demo Kafka real time stream aggregation using reduce()
 
 ### Kafka Topics, Partitions & Replication Factor
 

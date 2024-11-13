@@ -20,3 +20,8 @@
 /kafka-streams-playground/pos-simulator-avro/target/
 /kafka-streams-playground/rewards-in-memory-state/target/
 /kafka-streams-playground/streaming-table/target/
+/tmp/
+/kafka-streams-playground/word-count/target/
+/kafka-streams-playground/rewards-table/target/
+/kafka-streams-playground/age-count/target/
+/kafka-streams-playground/kstream-aggregate/target/

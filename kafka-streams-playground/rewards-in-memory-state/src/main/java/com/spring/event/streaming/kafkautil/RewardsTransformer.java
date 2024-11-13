@@ -8,6 +8,7 @@ import org.apache.kafka.streams.state.KeyValueStore;
 
 public class RewardsTransformer implements ValueTransformer<PosInvoice, Notification> {
 
+    private final static Double LOYALTY_FACTOR = 0.02;
     private final static String REWARDS_STORE = "CustomerRewardsStore";
     private KeyValueStore<String, Double> stateStore;
 
@@ -25,7 +26,7 @@ public class RewardsTransformer implements ValueTransformer<PosInvoice, Notifica
         notification.setInvoiceNumber(posInvoice.getInvoiceNumber());
         notification.setCustomerCardNo(posInvoice.getCustomerCardNo());
         notification.setTotalAmount(posInvoice.getTotalAmount());
-        notification.setEarnedLoyaltyPoints(posInvoice.getTotalAmount() * 0.02);
+        notification.setEarnedLoyaltyPoints(posInvoice.getTotalAmount() * LOYALTY_FACTOR);
         notification.setTotalLoyaltyPoints(0.0);
 
         Double accumulatedRewards = stateStore.get(notification.getCustomerCardNo());
