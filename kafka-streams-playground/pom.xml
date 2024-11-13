@@ -34,5 +34,6 @@
         <module>rewards-table</module>
         <module>kstream-aggregate</module>
         <module>age-count</module>
+        <module>ktable-aggregate</module>
     </modules>
 </project>

@@ -1,5 +1,5 @@
 ## Introduction
-Module used to demo Kafka Producer
+1. Module used to demo Kafka Producer
 
 ### Kafka Topics, Partitions & Replication Factor
 

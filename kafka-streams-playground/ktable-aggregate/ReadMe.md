@@ -1,5 +1,5 @@
 ## Introduction
-Module used to demo Kafka real time stream aggregation using KStream aggregate()
+Module used to demo Kafka real time stream aggregation using KTable aggregate()
 
 ### Kafka Topics, Partitions & Replication Factor
 
