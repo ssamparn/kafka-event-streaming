@@ -35,5 +35,6 @@
         <module>kstream-aggregate</module>
         <module>age-count</module>
         <module>ktable-aggregate</module>
+        <module>counting-window</module>
     </modules>
 </project>

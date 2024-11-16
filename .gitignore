@@ -26,3 +26,4 @@
 /kafka-streams-playground/age-count/target/
 /kafka-streams-playground/kstream-aggregate/target/
 /kafka-streams-playground/ktable-aggregate/target/
+/kafka-streams-playground/counting-window/target/

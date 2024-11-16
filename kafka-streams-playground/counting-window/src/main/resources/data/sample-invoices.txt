@@ -1,0 +1,7 @@
+STR1534:{"invoiceNumber": 101,"creationTime": "2019-02-05T10:00:10.00Z","storeId": "STR1534","totalAmount": 1920}
+STR1535:{"invoiceNumber": 102,"creationTime": "2019-02-05T10:00:40.00Z","storeId": "STR1535","totalAmount": 1860}
+STR1534:{"invoiceNumber": 103,"creationTime": "2019-02-05T10:01:11.00Z","storeId": "STR1534","totalAmount": 2400}
+STR1535:{"invoiceNumber": 104,"creationTime": "2019-02-05T10:02:11.00Z","storeId": "STR1535","totalAmount": 8936}
+STR1535:{"invoiceNumber": 105,"creationTime": "2019-02-05T10:03:15.00Z","storeId": "STR1535","totalAmount": 6375}
+STR1534:{"invoiceNumber": 106,"creationTime": "2019-02-05T10:04:12.00Z","storeId": "STR1534","totalAmount": 9365}
+STR1534:{"invoiceNumber": 107,"creationTime": "2019-02-05T10:07:11.00Z","storeId": "STR1534","totalAmount": 5276}

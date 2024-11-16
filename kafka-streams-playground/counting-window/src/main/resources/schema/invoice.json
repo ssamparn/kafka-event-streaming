@@ -1,0 +1,18 @@
+{
+  "type": "object",
+  "javaType": "com.spring.event.streaming.generated.SimpleInvoice",
+  "properties": {
+    "invoiceNumber": {
+      "type": "string"
+    },
+    "creationTime": {
+      "type": "string"
+    },
+    "storeId": {
+      "type": "string"
+    },
+    "totalAmount": {
+      "type": "number"
+    }
+  }
+}

@@ -60,7 +60,7 @@ import java.util.Properties;
  * Great!
  * */
 @Slf4j
-public class KafkaStreamAggregateApp {
+public class KStreamAggregateApp {
 
     private static final  String applicationID = "KStreamAggregateDemo";
     private static final  String bootstrapServers = "localhost:8082,localhost:8083,localhost:8084";
