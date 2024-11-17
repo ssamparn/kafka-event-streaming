@@ -8,7 +8,7 @@ import java.util.Set;
 @Slf4j
 public record AlphabetWordAggregate(String key, Set<String> valueList, int runningCount) {
 
-    // java model classes to represent a kafka stream aggregated.
+    // java model classes to represent am aggregated kafka stream
     public AlphabetWordAggregate() {
        this("", new HashSet<>(), 0);
     }

@@ -28,14 +28,14 @@ public class KafkaStreamJoinApplication {
 //        Topology kTableTopology = JoinOperatorsTopology.buildTopologyForLeftJoin();
         Topology kTableTopology = JoinOperatorsTopology.buildTopologyForOuterJoin();
 
-                Properties config = new Properties();
+        Properties config = new Properties();
         config.put(StreamsConfig.APPLICATION_ID_CONFIG, "joins"); // consumer group
         config.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         config.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest");
         config.put(DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());
 
         StatefulKafkaStreamsUtil.createTopics(config, List.of(ALPHABETS_TOPIC, ALPHABETS_ABBREVATIONS_TOPIC));
-        var kafkaStreams = new KafkaStreams(kTableTopology, config);
+        KafkaStreams kafkaStreams = new KafkaStreams(kTableTopology, config);
 
         Runtime.getRuntime().addShutdownHook(new Thread(kafkaStreams::close));
 

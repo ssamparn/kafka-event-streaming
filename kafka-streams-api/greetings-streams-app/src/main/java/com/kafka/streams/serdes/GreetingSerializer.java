@@ -28,6 +28,4 @@ public class GreetingSerializer implements Serializer<Greeting> {
             throw new RuntimeException(e);
         }
     }
-
-
 }

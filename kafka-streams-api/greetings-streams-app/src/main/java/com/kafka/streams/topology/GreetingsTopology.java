@@ -32,7 +32,7 @@ public class GreetingsTopology {
         KStream<String, String> greetingsStreamSpanish = streamsBuilder.stream(SOURCE_TOPIC_SPANISH);
 
         KStream<String, String> mergedKStream = greetingsStream.merge(greetingsStreamSpanish);
-        // behind the scene, source processing uses consumer apis
+        // behind the scene, source processing uses kafka consumer apis
 
         greetingsStream.print(Printed.<String, String>toSysOut().withLabel("GreetingsStringStream"));
 
@@ -54,7 +54,7 @@ public class GreetingsTopology {
 
         // 3. Sink Processing
         greetingsStreamModified.to(DESTINATION_TOPIC);
-        // behind the scene, sink processing uses producer apis
+        // behind the scene, sink processing uses kafka producer apis
 
         return streamsBuilder.build();
     }
