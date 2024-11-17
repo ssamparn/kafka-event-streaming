@@ -1,0 +1,10 @@
+Part-1 (Produce with Counting Windows App):
+
+STR1534:{"invoiceNumber": 101,"creationTime": "2019-02-05T10:01:00.00Z","storeId": "STR1534","totalAmount": 1920}
+STR1534:{"invoiceNumber": 102,"creationTime": "2019-02-05T10:08:10.00Z","storeId": "STR1534","totalAmount": 2400}
+
+
+Part-2:
+STR1534:{"invoiceNumber": 101,"creationTime": "2019-02-05T10:01:00.00Z","storeId": "STR1534","totalAmount": 1920}
+STR1534:{"invoiceNumber": 102,"creationTime": "2019-02-05T10:08:10.00Z","storeId": "STR1534","totalAmount": 2400}
+STR1534:{"invoiceNumber": 103,"creationTime": "2019-02-05T10:03:00.00Z","storeId": "STR1534","totalAmount": 6375}
