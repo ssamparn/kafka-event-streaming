@@ -3,7 +3,9 @@ package com.kafka.orders.streams.topology;
 import com.kafka.orders.streams.domains.Order;
 import com.kafka.orders.streams.domains.OrderType;
 import com.kafka.orders.streams.domains.Revenue;
+import com.kafka.orders.streams.domains.Store;
 import com.kafka.orders.streams.domains.TotalRevenue;
+import com.kafka.orders.streams.domains.TotalRevenueWithAddress;
 import com.kafka.orders.streams.serdes.SerdesFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.common.serialization.Serdes;
@@ -23,6 +25,7 @@ import org.apache.kafka.streams.kstream.Named;
 import org.apache.kafka.streams.kstream.Predicate;
 import org.apache.kafka.streams.kstream.Printed;
 import org.apache.kafka.streams.kstream.Produced;
+import org.apache.kafka.streams.kstream.ValueJoiner;
 import org.apache.kafka.streams.state.KeyValueStore;
 
 import static com.kafka.orders.streams.utils.OrdersKafkaStreamUtil.GENERAL_ORDERS_COUNT_TOPIC;
@@ -32,6 +35,7 @@ import static com.kafka.orders.streams.utils.OrdersKafkaStreamUtil.ORDERS_TOPIC;
 import static com.kafka.orders.streams.utils.OrdersKafkaStreamUtil.RESTAURANT_ORDERS_COUNT_TOPIC;
 import static com.kafka.orders.streams.utils.OrdersKafkaStreamUtil.RESTAURANT_ORDERS_REVENUE_TOPIC;
 import static com.kafka.orders.streams.utils.OrdersKafkaStreamUtil.RESTAURANT_ORDERS_TOPIC;
+import static com.kafka.orders.streams.utils.OrdersKafkaStreamUtil.STORES_TOPIC;
 
 @Slf4j
 public class OrdersTopology {
@@ -175,6 +179,54 @@ public class OrdersTopology {
         return streamsBuilder.build();
     }
 
+    // Business Requirement 5: Join the store information with revenue made from store. Store information will be received from a different topic.
+    // From the requirement of it, this is going to be a KStream-KTable join.
+    // Revenue information from Order = KStream, Store information = KTable.
 
+    public static Topology buildJoiningStoreInformationWithRevenueTopology() {
+        StreamsBuilder streamsBuilder = new StreamsBuilder();
 
+        KStream<String, Order> orderKStream = streamsBuilder.stream(ORDERS_TOPIC, Consumed.with(Serdes.String(), SerdesFactory.orderSerde()));
+        orderKStream.print(Printed.<String, Order>toSysOut().withLabel("orders@source"));
+
+        KTable<String, Store> storeKTable = streamsBuilder.table(STORES_TOPIC, Consumed.with(Serdes.String(), SerdesFactory.storeSerde()));
+        storeKTable.toStream().print(Printed.<String, Store>toSysOut().withLabel("store@source"));
+
+        orderKStream
+                .split(Named.as("General-Restaurant-Order-Branched"))
+                .branch(getOrderPredicate(OrderType.GENERAL), Branched.withConsumer(generalOrdersStream -> {
+                    generalOrdersStream.print(Printed.<String, Order>toSysOut().withLabel("generalOrders@source"));
+                    aggregateOrdersByRevenue(generalOrdersStream, GENERAL_ORDERS_REVENUE_TOPIC, storeKTable);
+                }))
+                .branch(getOrderPredicate(OrderType.RESTAURANT), Branched.withConsumer(restaurantOrdersStream -> {
+                    restaurantOrdersStream.print(Printed.<String, Order>toSysOut().withLabel("restaurantOrders@source"));
+                    aggregateOrdersByRevenue(restaurantOrdersStream, RESTAURANT_ORDERS_REVENUE_TOPIC, storeKTable);
+                }));
+
+        return streamsBuilder.build();
+    }
+
+    private static void aggregateOrdersByRevenue(KStream<String, Order> ordersStream, String storeName, KTable<String, Store> storeKTable) {
+        Initializer<TotalRevenue> totalRevenueInitializer = TotalRevenue::new;
+        Aggregator<String, Order, TotalRevenue> aggregator = (key,order, totalRevenue ) -> totalRevenue.updateRunningRevenue(key, order);
+
+        KTable<String, TotalRevenue> revenueTable = ordersStream
+                .map((key, value) -> KeyValue.pair(value.locationId(), value))
+                .groupByKey(Grouped.with(Serdes.String(), SerdesFactory.orderSerde()))
+                .aggregate(totalRevenueInitializer,
+                        aggregator,
+                        Materialized
+                                .<String, TotalRevenue, KeyValueStore<Bytes, byte[]>>as(storeName)
+                                .withKeySerde(Serdes.String())
+                                .withValueSerde(SerdesFactory.totalRevenueSerde())
+                );
+
+        revenueTable.toStream().print(Printed.<String,TotalRevenue>toSysOut().withLabel(storeName));
+
+        ValueJoiner<TotalRevenue, Store, TotalRevenueWithAddress> valueJoiner = TotalRevenueWithAddress::new;
+
+        KTable<String, TotalRevenueWithAddress> revenueWithStoreTable = revenueTable.leftJoin(storeKTable, valueJoiner);
+
+        revenueWithStoreTable.toStream().print(Printed.<String,TotalRevenueWithAddress>toSysOut().withLabel(storeName + "-bystore"));
+    }
 }

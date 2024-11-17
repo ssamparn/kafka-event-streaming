@@ -1,4 +1,4 @@
-package com.kafka.streams.topology;
+package com.kafka.streams.stream.topology;
 
 import com.kafka.streams.domain.Greeting;
 import com.kafka.streams.serdes.SerdesFactory;
@@ -16,27 +16,51 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.kafka.streams.util.GreetingsStreamUtil.DESTINATION_TOPIC;
-import static com.kafka.streams.util.GreetingsStreamUtil.SOURCE_TOPIC;
-import static com.kafka.streams.util.GreetingsStreamUtil.SOURCE_TOPIC_SPANISH;
+import static com.kafka.streams.stream.util.GreetingsStreamUtil.DESTINATION_TOPIC;
+import static com.kafka.streams.stream.util.GreetingsStreamUtil.SOURCE_TOPIC;
+import static com.kafka.streams.stream.util.GreetingsStreamUtil.SOURCE_TOPIC_SPANISH;
 
 @Slf4j
 public class GreetingsTopology {
 
-    public static Topology buildStringSerdeTopology() {
-
+    public static Topology buildSimpleGreetingTopology() {
         StreamsBuilder streamsBuilder = new StreamsBuilder();
 
-        // 1. Source Processing
-        KStream<String, String> greetingsStream = streamsBuilder.stream(SOURCE_TOPIC);
+        // source processing
+        KStream<String, String> sourceGreetingsKStream = streamsBuilder.stream(SOURCE_TOPIC, Consumed.with(Serdes.String(), Serdes.String()));
+
+        // printing source KStream
+        sourceGreetingsKStream.print(Printed.<String, String>toSysOut().withLabel("SourceGreetingsKStream"));
+
+        // applying string uppercase operation
+        KStream<String, String> modifiedGreetingToUpperCaseKStream = sourceGreetingsKStream.mapValues(value -> value.toUpperCase());
+
+        // printing modified KStream
+        modifiedGreetingToUpperCaseKStream.print(Printed.<String, String>toSysOut().withLabel("ModifiedGreetingToUpperCaseKStream"));
+
+        // sink processing
+        modifiedGreetingToUpperCaseKStream.to(DESTINATION_TOPIC, Produced.with(Serdes.String(), Serdes.String()));
+
+        return streamsBuilder.build();
+    }
+
+    public static Topology buildStringSerdeTopology() {
+        StreamsBuilder streamsBuilder = new StreamsBuilder();
+
+        // source processing
+        KStream<String, String> greetingsSourceStream = streamsBuilder.stream(SOURCE_TOPIC);
         KStream<String, String> greetingsStreamSpanish = streamsBuilder.stream(SOURCE_TOPIC_SPANISH);
 
-        KStream<String, String> mergedKStream = greetingsStream.merge(greetingsStreamSpanish);
+        KStream<String, String> mergedKStream = greetingsSourceStream.merge(greetingsStreamSpanish);
         // behind the scene, source processing uses kafka consumer apis
 
-        greetingsStream.print(Printed.<String, String>toSysOut().withLabel("GreetingsStringStream"));
+        greetingsSourceStream.print(Printed.<String, String>toSysOut().withLabel("GreetingsStringStream"));
 
-        // 2. Stream Processing
+        /* *
+         * stream processing
+         * map(): use map() if you want to transform both key and value.
+         * mapValues(): use mapValues() if you just want to transform the value.
+         * */
         KStream<String, String> greetingsStreamModified = mergedKStream
                 .filter((key, value) -> value.length() > 5)
                 .map((key, value) -> KeyValue.pair(key.toUpperCase(), value.toUpperCase()))
@@ -47,14 +71,12 @@ public class GreetingsTopology {
                             .collect(Collectors.toList());
                 });
 
-        // map(): use map() if you want to transform both key and value.
-        // mapValues(): use mapValues() if you just want to transform the value.
-
         greetingsStreamModified.print(Printed.<String, String>toSysOut().withLabel("GreetingsStringStreamModified"));
 
-        // 3. Sink Processing
+        /* *
+         * sink processing: behind the scene, sink processing uses kafka producer apis
+         * */
         greetingsStreamModified.to(DESTINATION_TOPIC);
-        // behind the scene, sink processing uses kafka producer apis
 
         return streamsBuilder.build();
     }
@@ -62,7 +84,7 @@ public class GreetingsTopology {
     public static Topology buildCustomSerdeTopology() {
         StreamsBuilder streamsBuilder = new StreamsBuilder();
 
-        // 1. Source Processing
+        // source processing
         KStream<String, Greeting> greetingsStream = streamsBuilder.stream(SOURCE_TOPIC, Consumed.with(Serdes.String(), SerdesFactory.greetingSerde()));
         KStream<String, Greeting> greetingsStreamSpanish = streamsBuilder.stream(SOURCE_TOPIC_SPANISH, Consumed.with(Serdes.String(), SerdesFactory.greetingSerde()));
 
@@ -71,18 +93,14 @@ public class GreetingsTopology {
 
         greetingsStream.print(Printed.<String, Greeting>toSysOut().withLabel("GreetingsCustomStream"));
 
-        // 2. Stream Processing
+        // stream processing
         KStream<String, Greeting> greetingsStreamModified = mergedKStream
                 .mapValues((readOnlyKey, value) -> new Greeting(value.getMessage().toUpperCase(), value.getTimeStamp()));
 
-        // map(): use map() if you want to transform both key and value.
-        // mapValues(): use mapValues() if you just want to transform the value.
-
         greetingsStreamModified.print(Printed.<String, Greeting>toSysOut().withLabel("GreetingsCustomStreamModified"));
 
-        // 3. Sink Processing
+        // sink processing
         greetingsStreamModified.to(DESTINATION_TOPIC, Produced.with(Serdes.String(), SerdesFactory.greetingSerde()));
-        // behind the scene, sink processing uses producer apis
 
         return streamsBuilder.build();
     }
@@ -90,7 +108,7 @@ public class GreetingsTopology {
     public static Topology buildGenericSerdeTopology() {
         StreamsBuilder streamsBuilder = new StreamsBuilder();
 
-        // 1. Source Processing
+        // source processing
         KStream<String, Greeting> greetingsStream = streamsBuilder.stream(SOURCE_TOPIC, Consumed.with(Serdes.String(), SerdesFactory.greetingSerdeUsingGenerics()));
         KStream<String, Greeting> greetingsStreamSpanish = streamsBuilder.stream(SOURCE_TOPIC_SPANISH, Consumed.with(Serdes.String(), SerdesFactory.greetingSerdeUsingGenerics()));
 
@@ -99,16 +117,13 @@ public class GreetingsTopology {
 
         greetingsStream.print(Printed.<String, Greeting>toSysOut().withLabel("GreetingsCustomStream"));
 
-        // 2. Stream Processing
+        // stream processing
         KStream<String, Greeting> greetingsStreamModified = mergedKStream
                 .mapValues((readOnlyKey, value) -> new Greeting(value.getMessage().toUpperCase(), value.getTimeStamp()));
 
-        // map(): use map() if you want to transform both key and value.
-        // mapValues(): use mapValues() if you just want to transform the value.
-
         greetingsStreamModified.print(Printed.<String, Greeting>toSysOut().withLabel("GreetingsCustomStreamModified"));
 
-        // 3. Sink Processing
+        // sink processing
         greetingsStreamModified.to(DESTINATION_TOPIC, Produced.with(Serdes.String(), SerdesFactory.greetingSerdeUsingGenerics()));
         // behind the scene, sink processing uses producer apis
 
@@ -118,7 +133,7 @@ public class GreetingsTopology {
     public static Topology buildStreamProcessingErrorTopology() {
         StreamsBuilder streamsBuilder = new StreamsBuilder();
 
-        // 1. Source Processing
+        // source processing
         KStream<String, Greeting> greetingsStream = streamsBuilder.stream(SOURCE_TOPIC, Consumed.with(Serdes.String(), SerdesFactory.greetingSerdeUsingGenerics()));
         KStream<String, Greeting> greetingsStreamSpanish = streamsBuilder.stream(SOURCE_TOPIC_SPANISH, Consumed.with(Serdes.String(), SerdesFactory.greetingSerdeUsingGenerics()));
 
@@ -127,7 +142,7 @@ public class GreetingsTopology {
 
         greetingsStream.print(Printed.<String, Greeting>toSysOut().withLabel("GreetingsCustomStream"));
 
-        // 2. Stream Processing
+        // stream processing
         KStream<String, Greeting> greetingsStreamModified = mergedKStream
                 .mapValues((readOnlyKey, value) -> {
                     if (value.getMessage().equals("Transient Error")) {
@@ -142,12 +157,9 @@ public class GreetingsTopology {
                 })
                 .filter((k, v) -> k != null && v != null);
 
-        // map(): use map() if you want to transform both key and value.
-        // mapValues(): use mapValues() if you just want to transform the value.
-
         greetingsStreamModified.print(Printed.<String, Greeting>toSysOut().withLabel("GreetingsCustomStreamModified"));
 
-        // 3. Sink Processing
+        // sink processing
         greetingsStreamModified.to(DESTINATION_TOPIC, Produced.with(Serdes.String(), SerdesFactory.greetingSerdeUsingGenerics()));
         // behind the scene, sink processing uses producer apis
 

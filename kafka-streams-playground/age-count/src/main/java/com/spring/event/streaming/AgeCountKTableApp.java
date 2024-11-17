@@ -41,10 +41,10 @@ import java.util.Properties;
 @Slf4j
 public class AgeCountKTableApp {
 
-    private static final  String applicationID = "AgeCountDemo";
-    private static final  String bootstrapServers = "localhost:8082,localhost:8083,localhost:8084";
-    private static final  String topicName = "person-age";
-    private static final  String stateStoreLocation = "tmp/state-store";
+    private static final String applicationID = "AgeCountDemo";
+    private static final String bootstrapServers = "localhost:8082,localhost:8083,localhost:8084";
+    private static final String topicName = "person-age";
+    private static final String stateStoreLocation = "tmp/state-store";
 
     public static void main(String[] args) {
         Properties properties = new Properties();

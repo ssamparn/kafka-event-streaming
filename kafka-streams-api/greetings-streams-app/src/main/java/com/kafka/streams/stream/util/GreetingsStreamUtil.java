@@ -1,4 +1,4 @@
-package com.kafka.streams.util;
+package com.kafka.streams.stream.util;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.admin.AdminClient;
@@ -24,12 +24,16 @@ public class GreetingsStreamUtil {
     public static final String SOURCE_TOPIC = "greetings";
     public static String SOURCE_TOPIC_SPANISH = "greetings-spanish";
     public static final String DESTINATION_TOPIC = "greetings-uppercase";
-    private static KafkaProducer<String, String> producer = new KafkaProducer<>(producerProps());
+    public static final String bootstrapServers = "localhost:8082,localhost:8083,localhost:8084";
+    private static KafkaProducer<String, String> kafkaProducer = new KafkaProducer<>(producerProperties());
 
+    /* *
+     * programmatically creating kafka topics
+     * admin client class is part of Kafka Clients library
+     * */
     public static void createTopics(Properties config, List<String> greetingsTopics) {
-
         AdminClient admin = AdminClient.create(config);
-        var partitions = 2;
+        int partitions = 2;
         short replication = 1;
 
         List<NewTopic> newTopics = greetingsTopics
@@ -42,31 +46,29 @@ public class GreetingsStreamUtil {
             createTopicsResult.all().get();
             log.info("topics are created successfully");
         } catch (Exception e) {
-            log.error("Exception creating topics : {} ",e.getMessage(), e);
+            log.error("Exception creating topics : {}", e.getMessage(), e);
         }
     }
 
-    public static Map<String, Object> producerProps(){
-
-        Map<String,Object> propsMap = new HashMap<>();
-        propsMap.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-        propsMap.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
-        propsMap.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
-        return propsMap;
+    public static Map<String, Object> producerProperties(){
+        Map<String,Object> propertiesMap = new HashMap<>();
+        propertiesMap.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
+        propertiesMap.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+        propertiesMap.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+        return propertiesMap;
     }
 
     public static RecordMetadata publishMessageSync(String topicName, String key, String message) {
-
-        ProducerRecord<String,String> producerRecord = new ProducerRecord<>(topicName, key, message);
+        ProducerRecord<String, String> producerRecord = new ProducerRecord<>(topicName, key, message);
         RecordMetadata recordMetadata = null;
 
         try {
-            log.info("producerRecord : {}", producerRecord);
-            recordMetadata = producer.send(producerRecord).get();
+            log.info("Producer Record : {}", producerRecord);
+            recordMetadata = kafkaProducer.send(producerRecord).get();
         } catch (InterruptedException e) {
-            log.error("InterruptedException in publishMessageSync : {}", e.getMessage(), e);
+            log.error("Interrupted Exception in publishMessageSync : {}", e.getMessage(), e);
         } catch (ExecutionException e) {
-            log.error("ExecutionException in publishMessageSync : {}", e.getMessage(), e);
+            log.error("Execution Exception in publishMessageSync : {}", e.getMessage(), e);
         }catch(Exception e){
             log.error("Exception in publishMessageSync : {}", e.getMessage(), e);
         }

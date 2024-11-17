@@ -13,6 +13,7 @@ import java.util.Properties;
 import static com.kafka.orders.streams.utils.OrdersKafkaStreamUtil.GENERAL_ORDERS_TOPIC;
 import static com.kafka.orders.streams.utils.OrdersKafkaStreamUtil.ORDERS_TOPIC;
 import static com.kafka.orders.streams.utils.OrdersKafkaStreamUtil.RESTAURANT_ORDERS_TOPIC;
+import static com.kafka.orders.streams.utils.OrdersKafkaStreamUtil.STORES_TOPIC;
 import static com.kafka.orders.streams.utils.OrdersKafkaStreamUtil.createTopics;
 
 @Slf4j
@@ -26,13 +27,14 @@ public class OrdersKafkaStreamsApplication {
         config.put(StreamsConfig.COMMIT_INTERVAL_MS_CONFIG, "5000"); // commit interval
         //config.put(StreamsConfig.DEFAULT_TIMESTAMP_EXTRACTOR_CLASS_CONFIG, OrderTimeStampExtractor.class); // timestamp extractor
 
-        createTopics(config, List.of(ORDERS_TOPIC, GENERAL_ORDERS_TOPIC, RESTAURANT_ORDERS_TOPIC));
+        createTopics(config, List.of(STORES_TOPIC, ORDERS_TOPIC, GENERAL_ORDERS_TOPIC, RESTAURANT_ORDERS_TOPIC));
 
         // create an instance of the topology
 //        Topology topology = OrdersTopology.buildSplitGeneralRestaurantOrdersTopology();
 //        Topology topology = OrdersTopology.buildTransformingOrderToRevenueTypeTopology();
 //        Topology topology = OrdersTopology.buildAggregateOrdersByCountTopology();
-        Topology topology = OrdersTopology.buildAggregateOrdersByCountingTotalRevenueMadeFromOrdersTopology();
+//        Topology topology = OrdersTopology.buildAggregateOrdersByCountingTotalRevenueMadeFromOrdersTopology();
+        Topology topology = OrdersTopology.buildJoiningStoreInformationWithRevenueTopology();
 
         // Create an instance of KafkaStreams
         KafkaStreams kafkaStreams = new KafkaStreams(topology, config);

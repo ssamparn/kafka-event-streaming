@@ -5,13 +5,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.kafka.streams.domain.Greeting;
-import com.kafka.streams.util.GreetingsStreamUtil;
+import com.kafka.streams.stream.util.GreetingsStreamUtil;
 import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static com.kafka.streams.util.GreetingsStreamUtil.publishMessageSync;
+import static com.kafka.streams.stream.util.GreetingsStreamUtil.publishMessageSync;
 
 
 @Slf4j

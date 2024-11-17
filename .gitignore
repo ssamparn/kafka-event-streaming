@@ -3,6 +3,7 @@
 .idea/jarRepositories.xml
 .idea/misc.xml
 .idea/
+/kafka-streams-api/workspace/kafka-cluster/data/
 /kafka-streams-playground/workspace/kafka-cluster/data/
 /kafka-streams-playground/workspace/kafka-single-node/data/
 /avro-schema-registry/workspace/kafka-single-node/data/

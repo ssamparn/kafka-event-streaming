@@ -24,7 +24,7 @@ public class SerdesFactory {
 //        JsonSerializer<AlphabetWordAggregate> jsonSerializer = new JsonSerializer<>();
 //
 //        JsonDeserializer<AlphabetWordAggregate> jsonDeSerializer = new JsonDeserializer<>(AlphabetWordAggregate.class);
-//        return  Serdes.serdeFrom(jsonSerializer, jsonDeSerializer);
+//        return Serdes.serdeFrom(jsonSerializer, jsonDeSerializer);
 //    }
 //
 //
