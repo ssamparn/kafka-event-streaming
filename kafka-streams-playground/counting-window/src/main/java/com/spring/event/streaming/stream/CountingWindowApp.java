@@ -89,7 +89,7 @@ import java.util.Properties;
  *
  * Problem Statement:
  * Compute the number of invoices generated in a 5-minute window by each store. You can simulate the scenario in a controlled environment.
- * Create a Kafka topic named as simple-invoice. Send the following Invoices to the Kafka topic. See sample-invoices.txt
+ * Create a Kafka topic named as simple-invoice. Send the following Invoices to the Kafka topic. See sample-invoices-counting-windows.txt
  * Each invoice comes as key/value pair. The value before the colon is a store-id which is the key. Rest of the value is a JSON Serialize invoice event.
  * The event time of the invoice is recorded in the creationTime field. We want to develop a stream processing application that uses event-time semantics to compute the number of invoices in a 5-minute window for each store.
  * For the given invoices, you can expect the following outcome.
