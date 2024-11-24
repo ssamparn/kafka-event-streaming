@@ -16,12 +16,12 @@ import static com.kafka.streams.stream.util.GreetingsStreamUtil.*;
 
 /* *
  * Problem Statement:
- * Build a simple Kafka Streams app named Greetings App.
- * Read from a Kafka topic named "greetings" and then perform a stream processing logic and write it to another kafka topic named "greetings-uppercase.
- * Just perform the uppercase operation and then write it to the destination kafka topic.
+ * Combine 2 independent Kafka streams or KStream into a single KStream.
+ * Let's say we have 2 KStreams which are being read from 2 different topics, and we have a business use case to channel that data that's coming out from these 2 topics into one single topic.
+ * In these kind of scenarios, we can use the merge operator to channel data that's coming from 2 different topics into one single topic.
  * */
 @Slf4j
-public class GreetingsStreamsOperationsApp {
+public class GreetingsStreamsMergeApp {
 
     public static void main(String[] args) {
         Properties streamProperties = new Properties();
@@ -32,10 +32,10 @@ public class GreetingsStreamsOperationsApp {
         streamProperties.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.StringSerde.class);
 
         // create topics programmatically
-        GreetingsStreamUtil.createTopics(streamProperties, List.of(SOURCE_TOPIC, DESTINATION_TOPIC));
+        GreetingsStreamUtil.createTopics(streamProperties, List.of(SOURCE_TOPIC, SOURCE_TOPIC_SPANISH, DESTINATION_TOPIC));
 
         // create topology
-        Topology simpleGreetingsTopology = GreetingsTopology.buildFilterMapFlatMapGreetingsTopology();
+        Topology simpleGreetingsTopology = GreetingsTopology.buildGreetingsMergeTopology();
 
         KafkaStreams kafkaStreams = new KafkaStreams(simpleGreetingsTopology, streamProperties);
 

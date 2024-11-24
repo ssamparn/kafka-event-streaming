@@ -17,6 +17,7 @@ import static com.kafka.streams.stream.util.GreetingsStreamUtil.APP_NAME;
 import static com.kafka.streams.stream.util.GreetingsStreamUtil.DESTINATION_TOPIC;
 import static com.kafka.streams.stream.util.GreetingsStreamUtil.SOURCE_TOPIC;
 import static com.kafka.streams.stream.util.GreetingsStreamUtil.SOURCE_TOPIC_SPANISH;
+import static com.kafka.streams.stream.util.GreetingsStreamUtil.bootstrapServers;
 
 @Slf4j
 public class GreetingStreamGenericApp {
@@ -24,7 +25,7 @@ public class GreetingStreamGenericApp {
     public static void main(String[] args) {
         Properties streamProperties = new Properties();
         streamProperties.put(StreamsConfig.APPLICATION_ID_CONFIG, APP_NAME); // consumer group
-        streamProperties.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        streamProperties.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
         streamProperties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest"); // read only the new messages
         streamProperties.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.StringSerde.class);
         streamProperties.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.StringSerde.class);
