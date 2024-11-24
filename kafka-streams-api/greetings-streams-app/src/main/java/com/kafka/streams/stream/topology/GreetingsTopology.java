@@ -26,7 +26,7 @@ public class GreetingsTopology {
     public static Topology buildSimpleGreetingTopology() {
         StreamsBuilder streamsBuilder = new StreamsBuilder();
 
-        // source processing
+        // source processing: behind the scene, source processing uses kafka consumer apis
         KStream<String, String> sourceGreetingsKStream = streamsBuilder.stream(SOURCE_TOPIC, Consumed.with(Serdes.String(), Serdes.String()));
 
         // printing source KStream
@@ -38,11 +38,45 @@ public class GreetingsTopology {
         // printing modified KStream
         modifiedGreetingToUpperCaseKStream.print(Printed.<String, String>toSysOut().withLabel("ModifiedGreetingToUpperCaseKStream"));
 
-        // sink processing
+        // sink processing: behind the scene, sink processing uses kafka producer apis
         modifiedGreetingToUpperCaseKStream.to(DESTINATION_TOPIC, Produced.with(Serdes.String(), Serdes.String()));
 
         return streamsBuilder.build();
     }
+
+    public static Topology buildFilterMapFlatMapTopology() {
+        StreamsBuilder streamsBuilder = new StreamsBuilder();
+
+        // source processing
+        KStream<String, String> greetingsSourceStream = streamsBuilder.stream(SOURCE_TOPIC);
+
+        // printing source KStream
+        greetingsSourceStream.print(Printed.<String, String>toSysOut().withLabel("SourceGreetingsKStream"));
+
+        /* *
+         * stream processing
+         * map(): use map() if you want to transform both key and value.
+         * mapValues(): use mapValues() if you just want to transform the value.
+         * */
+        KStream<String, String> greetingsStreamModified = greetingsSourceStream
+                .filter((key, value) -> value.length() > 5)
+                .map((key, value) -> KeyValue.pair(key.toUpperCase(), value.toUpperCase()))
+                .flatMap((key, value) -> {
+                    List<String> strings = Arrays.asList(value.split(""));
+                    return strings.stream()
+                            .map(val -> KeyValue.pair(key, val))
+                            .collect(Collectors.toList());
+                });
+
+        // printing modified KStream
+        greetingsStreamModified.print(Printed.<String, String>toSysOut().withLabel("ModifiedGreetingToUpperCaseKStream"));
+
+        // sink processing
+        greetingsStreamModified.to(DESTINATION_TOPIC);
+
+        return streamsBuilder.build();
+    }
+
 
     public static Topology buildStringSerdeTopology() {
         StreamsBuilder streamsBuilder = new StreamsBuilder();
